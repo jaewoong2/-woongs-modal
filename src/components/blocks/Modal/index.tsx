@@ -21,8 +21,6 @@ type Props = {
 }
 
 const Modal: React.FC<Props> = ({ header, message, href, src, footerRight, footerLeft }) => {
-  console.log(footerLeft)
-
   return (
     <ModalContainer>
       <ModalContents>
