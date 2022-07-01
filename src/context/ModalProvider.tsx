@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useCallback, useState } from 'react'
 import Modal from '../components/blocks/Modal'
 
 const IMAGE_MOCK_SRC =
@@ -8,9 +8,19 @@ type Props = {
   children?: React.ReactNode
 }
 
+type StateFunction = () => void | undefined
+
 type ModalContextType = {
   show: () => void
   hide: () => void
+  setSrc: (s: string) => void
+  setHref: (s: string) => void
+  setMessage: (c: React.ReactNode) => void
+  setHeader: (c: React.ReactNode) => void
+  setFooterLeftText: (c: React.ReactNode) => void
+  setFooterRightText: (c: React.ReactNode) => void
+  setOnClickFooterLeft: (cb: () => void) => void
+  setOnClickFooterRight: (cb: () => void) => void
 }
 
 const initialContextValue = {} as ModalContextType
@@ -22,19 +32,43 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [src, setSrc] = useState(IMAGE_MOCK_SRC)
   const [href, setHref] = useState('')
 
+  const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [header, setHeader] = useState<React.ReactNode | null>(null)
-  const [footerLeft, setFooterLeft] = useState('닫기')
-  const [footerRight, setFooterRight] = useState('확인')
+  const [footerLeftText, setFooterLeftText] = useState<React.ReactNode>('닫기')
+  const [footerRightText, setFooterRightText] = useState<React.ReactNode>('확인')
+
+  const [onClickFooterLeft, setOnClickFooterLeft] = useState<StateFunction>(() => {})
+  const [onClickFooterRight, setOnClickFooterRight] = useState<StateFunction>(() => {})
 
   return (
     <ModalContext.Provider
       value={{
         show: () => setIsShow(true),
         hide: () => setIsShow(false),
+        setSrc: (s) => setSrc(s),
+        setHref: (s) => setHref(s),
+        setHeader: (c) => setHeader(c),
+        setMessage: (c) => setMessage(c),
+        setFooterLeftText: (c) => setFooterLeftText(c),
+        setFooterRightText: (c) => setFooterRightText(c),
+        setOnClickFooterLeft: (cb) => setOnClickFooterLeft(cb),
+        setOnClickFooterRight: (cb) => setOnClickFooterRight(cb),
       }}
     >
       {children}
-      {<Modal src={src} href={href} header={header} footerLeft={footerLeft} footerRight={footerRight}></Modal>}
+      {isShow && (
+        <Modal
+          setHide={() => setIsShow(false)}
+          message={message}
+          src={src}
+          href={href}
+          header={header}
+          footerLeftText={footerLeftText}
+          footerRightText={footerRightText}
+          onClickFooterLeft={onClickFooterLeft}
+          onClickFooterRight={onClickFooterRight}
+        ></Modal>
+      )}
     </ModalContext.Provider>
   )
 }

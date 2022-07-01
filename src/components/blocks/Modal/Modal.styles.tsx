@@ -1,4 +1,12 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+
+type ModalContentsProps = {
+  borderRaidus: string
+}
+
+const primaryColor = '#3e79ff'
+const warnColor = '#ff0000'
 
 const marginValue = {
   x: 20,
@@ -37,10 +45,10 @@ export const ModalAncher = styled.a`
   margin: ${marginValue.y}px ${marginValue.x}px;
 `
 
-export const ModalContents = styled.div`
+export const ModalContents = styled.div<ModalContentsProps>`
   width: ${modalWidth};
   background-color: white;
-  border-radius: 16px;
+  border-radius: ${({ borderRaidus }) => borderRaidus};
 
   z-index: 9999;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -60,15 +68,20 @@ export const ModalHeader = styled.div`
   margin: ${marginValue.y}px;
 `
 
-export const ModalBody = styled.div``
+export const ModalBody = styled.div`
+  width: 100%;
+  margin: ${marginValue.y}px ${marginValue.x}px;
+  margin-bottom: 0px;
+`
 
 export const ModalFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: ${marginValue.y}px ${marginValue.x}px;
+  padding: 10px ${marginValue.x}px;
 
   .footer-btn {
     width: 100%;
+    padding: ${5}px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,7 +91,7 @@ export const ModalFooter = styled.div`
     background-color: transparent;
 
     font-size: 1em;
-
+    font-weight: 400;
     cursor: pointer;
   }
 `
@@ -86,19 +99,27 @@ export const ModalFooter = styled.div`
 export const Left = styled.button`
   margin-right: 10px;
   position: relative;
-
+  color: ${warnColor};
   &::after {
-    position: absolute;
-    background-color: #272727;
-    content: '';
+    ${({ className }) =>
+      className?.includes('divider') &&
+      css`
+        position: absolute;
+        background-color: #272727;
+        content: '';
 
-    width: 2px;
-    height: 100%;
+        width: 1px;
+        height: 2em;
 
-    left: calc(100% + 11px);
+        left: calc(100% + 11px);
+      `}
   }
 `
 
 export const Right = styled.button`
   margin-left: 10px;
+
+  &:hover {
+    color: ${primaryColor};
+  }
 `
