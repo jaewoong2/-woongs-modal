@@ -1,7 +1,8 @@
-import React, { createContext, useCallback, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import Modal from '../components/blocks/Modal'
+import ModalButton from '../components/blocks/ModalButton'
 
-const IMAGE_MOCK_SRC =
+export const IMAGE_MOCK_SRC =
   'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1989&q=80'
 
 type Props = {
@@ -10,17 +11,23 @@ type Props = {
 
 type StateFunction = () => void | undefined
 
+type ModalType = 'normal' | 'button'
+
 type ModalContextType = {
   show: () => void
   hide: () => void
+  setType: (t: ModalType) => void
   setSrc: (s: string) => void
   setHref: (s: string) => void
+  setBorderRadius: (s: string) => void
+  setTypes: (s: 'primary' | 'warn') => void
   setMessage: (c: React.ReactNode) => void
   setHeader: (c: React.ReactNode) => void
   setFooterLeftText: (c: React.ReactNode) => void
   setFooterRightText: (c: React.ReactNode) => void
   setOnClickFooterLeft: (cb: () => void) => void
   setOnClickFooterRight: (cb: () => void) => void
+  setOnClickButton: (cb: () => void) => void
 }
 
 const initialContextValue = {} as ModalContextType
@@ -31,6 +38,9 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [isShow, setIsShow] = useState(false)
   const [src, setSrc] = useState(IMAGE_MOCK_SRC)
   const [href, setHref] = useState('')
+  const [borderRadius, setBorderRadius] = useState('')
+  const [type, setType] = useState<ModalType>('normal')
+  const [types, setTypes] = useState<'primary' | 'warn'>('primary')
 
   const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [header, setHeader] = useState<React.ReactNode | null>(null)
@@ -38,36 +48,57 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [footerRightText, setFooterRightText] = useState<React.ReactNode>('확인')
 
   const [onClickFooterLeft, setOnClickFooterLeft] = useState<StateFunction>(() => {})
+  const [onClickButton, setOnClickButton] = useState<StateFunction>(() => {})
   const [onClickFooterRight, setOnClickFooterRight] = useState<StateFunction>(() => {})
 
+  useEffect(() => {
+    console.log(href)
+  }, [href])
   return (
     <ModalContext.Provider
       value={{
         show: () => setIsShow(true),
         hide: () => setIsShow(false),
+        setType: (t) => setType(t),
         setSrc: (s) => setSrc(s),
         setHref: (s) => setHref(s),
+        setTypes: (s) => setTypes(s),
+        setBorderRadius: (s) => setBorderRadius(s),
         setHeader: (c) => setHeader(c),
         setMessage: (c) => setMessage(c),
         setFooterLeftText: (c) => setFooterLeftText(c),
         setFooterRightText: (c) => setFooterRightText(c),
         setOnClickFooterLeft: (cb) => setOnClickFooterLeft(cb),
         setOnClickFooterRight: (cb) => setOnClickFooterRight(cb),
+        setOnClickButton: (cb) => setOnClickButton(cb),
       }}
     >
       {children}
-      {isShow && (
+      {isShow && type === 'normal' && (
         <Modal
           setHide={() => setIsShow(false)}
           message={message}
           src={src}
           href={href}
           header={header}
+          borderRaidus={borderRadius}
           footerLeftText={footerLeftText}
           footerRightText={footerRightText}
           onClickFooterLeft={onClickFooterLeft}
           onClickFooterRight={onClickFooterRight}
         ></Modal>
+      )}
+      {isShow && type === 'button' && (
+        <ModalButton
+          setHide={() => setIsShow(false)}
+          src={src}
+          href={href}
+          types={types}
+          message={message}
+          header={header}
+          borderRaidus={borderRadius}
+          onClickButton={onClickButton}
+        ></ModalButton>
       )}
     </ModalContext.Provider>
   )

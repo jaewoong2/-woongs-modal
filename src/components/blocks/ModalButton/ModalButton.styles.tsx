@@ -41,6 +41,6 @@ export const ModalHeader = styled.div`
 
 export const ModalFooter = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 10px ${marginValue.x}px;
+  justify-content: center;
+  padding: 0px ${marginValue.x}px 20px ${marginValue.x}px;
 `

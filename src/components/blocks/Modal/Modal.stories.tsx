@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Modal from './index'
 // import { useToast } from '@jaewoong2/toast'
-import { useModal } from '../../../hooks/useModal'
+import { useModalNormal, ModalNoramlOptions } from '../../../hooks/useModalNoraml'
 
 export default {
   title: 'Block/Modal',
@@ -10,10 +10,8 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Modal>
 
-const Template: ComponentStory<typeof Modal> = ({ ...options }) => {
-  const { show, hide } = useModal()
-
-  useEffect(() => {}, [])
+const Template = ({ ...options }: ModalNoramlOptions) => {
+  const { show, hide } = useModalNormal({ ...options })
 
   return (
     <div style={{ width: '400px', height: '400px', background: '#d9d9d9', position: 'relative' }}>
@@ -25,5 +23,5 @@ const Template: ComponentStory<typeof Modal> = ({ ...options }) => {
 
 export const Primary = Template.bind({})
 Primary.args = {
-  children: 'Toast Message',
+  message: 'Modal Message',
 }
