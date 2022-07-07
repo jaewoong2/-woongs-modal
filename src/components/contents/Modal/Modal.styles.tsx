@@ -28,6 +28,7 @@ export const ModalContainer = styled.section`
 
 export const ModalContents = styled.div<ModalContentsProps>`
   width: ${modalWidth};
+
   background-color: white;
   border-radius: ${({ borderRaidus }) => borderRaidus};
 

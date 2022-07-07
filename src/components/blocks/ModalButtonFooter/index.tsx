@@ -4,7 +4,7 @@ import { Container, ModalButton } from './ModalButtonFooter.styles'
 type Props = {
   children?: React.ReactNode
   onClickButton?: () => void
-  types: 'primary' | 'warn'
+  types: 'primary' | 'warn' | 'normal'
 }
 
 const ModalButtonFooter: React.FC<Props> = ({ children, onClickButton, types }) => {

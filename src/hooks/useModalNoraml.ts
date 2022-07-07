@@ -5,6 +5,7 @@ export type ModalNoramlOptions = {
   src: string
   href: string
   borderRadius: string
+  isLoading: boolean
 
   message: React.ReactNode
   header: React.ReactNode
@@ -26,6 +27,7 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     setHref,
     setMessage,
     setOnClickFooterLeft,
+    setIsLoading,
     setType,
     setOnClickFooterRight,
     setSrc,
@@ -42,6 +44,7 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     setMessage(options?.message)
     setOnClickFooterLeft(options?.onClickFooterLeft)
     setOnClickFooterRight(options?.onClickFooterRight)
+    setIsLoading(options.isLoading)
   }, [])
 
   return { show, hide }

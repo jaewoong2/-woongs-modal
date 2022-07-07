@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react'
-import Modal from '../components/blocks/Modal'
-import ModalButton from '../components/blocks/ModalButton'
+import Modal from '../components/contents/Modal'
+import ModalButton from '../components/contents/ModalButton'
 
 export const IMAGE_MOCK_SRC =
-  'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1989&q=80'
+  'https://uploads.codesandbox.io/uploads/user/7cd4bee2-a6f4-4c44-a3e9-f670ab1086d9/mnTc-large_.jpg'
 
 type Props = {
   children?: React.ReactNode
@@ -16,6 +16,7 @@ type ModalType = 'normal' | 'button'
 type ModalContextType = {
   show: () => void
   hide: () => void
+  setIsLoading: (b: boolean) => void
   setType: (t: ModalType) => void
   setSrc: (s: string) => void
   setHref: (s: string) => void
@@ -36,6 +37,7 @@ export const ModalContext = createContext(initialContextValue)
 
 export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [isShow, setIsShow] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [src, setSrc] = useState(IMAGE_MOCK_SRC)
   const [href, setHref] = useState('')
   const [borderRadius, setBorderRadius] = useState('')
@@ -51,14 +53,12 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [onClickButton, setOnClickButton] = useState<StateFunction>(() => {})
   const [onClickFooterRight, setOnClickFooterRight] = useState<StateFunction>(() => {})
 
-  useEffect(() => {
-    console.log(href)
-  }, [href])
   return (
     <ModalContext.Provider
       value={{
         show: () => setIsShow(true),
         hide: () => setIsShow(false),
+        setIsLoading: (b) => setIsLoading(b),
         setType: (t) => setType(t),
         setSrc: (s) => setSrc(s),
         setHref: (s) => setHref(s),
@@ -78,6 +78,7 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
         <Modal
           setHide={() => setIsShow(false)}
           message={message}
+          isLoading={isLoading}
           src={src}
           href={href}
           header={header}
@@ -94,6 +95,7 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
           src={src}
           href={href}
           types={types}
+          isLoading={isLoading}
           message={message}
           header={header}
           borderRaidus={borderRadius}

@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
-import { Image } from '../../atoms/Image'
-import ModalBody from '../ModalBody'
-import ModalNormalFooter from '../ModalNormalFooter'
+import ModalBody from '../../blocks/ModalBody'
+import ModalNormalFooter from '../../blocks/ModalNormalFooter'
 import { ModalContainer, ModalContents, ModalFooter, ModalHeader } from './Modal.styles'
 
 type Props = {
@@ -9,6 +8,7 @@ type Props = {
   message: React.ReactNode
   href: string
   src: string
+  isLoading: boolean
   borderRaidus: string
 
   footerRightText: React.ReactNode
@@ -24,6 +24,7 @@ const Modal: React.FC<Props> = ({
   setHide,
   header,
   message,
+  isLoading,
   href,
   src,
   borderRaidus,
@@ -42,7 +43,7 @@ const Modal: React.FC<Props> = ({
     <ModalContainer onClick={handleModalView}>
       <ModalContents borderRaidus={borderRaidus ?? '8px'}>
         <ModalHeader>{header}</ModalHeader>
-        <ModalBody href={href} src={src} alt={`${header}`} message={message} />
+        <ModalBody isLoading={isLoading} href={href} src={src} alt={`${header}`} message={message} />
         <ModalFooter>
           <ModalNormalFooter
             onClickFooterLeft={onClickFooterLeft}

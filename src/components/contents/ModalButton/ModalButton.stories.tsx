@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 import ModalButton from './index'
 // import { useToast } from '@jaewoong2/toast'
@@ -24,4 +24,5 @@ const Template = ({ ...options }: ModalButtonOptions) => {
 export const Primary = Template.bind({})
 Primary.args = {
   message: 'ModalButton Message',
+  isLoading: false,
 }

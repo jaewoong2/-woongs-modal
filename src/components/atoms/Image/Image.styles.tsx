@@ -12,13 +12,11 @@ const skeletonLoading = keyframes`
 
 type SkeletonImageType = {
   isLoading: boolean
-  skeleton: boolean
 }
 
 export const SkeletonImage = styled.div<SkeletonImageType>`
-  ${({ isLoading, skeleton }) =>
+  ${({ isLoading }) =>
     isLoading &&
-    skeleton &&
     css`
       background-color: #c2cfd6;
       animation: ${skeletonLoading} 1s linear infinite alternate;

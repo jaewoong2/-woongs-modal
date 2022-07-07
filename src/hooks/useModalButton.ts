@@ -6,6 +6,7 @@ export type ModalButtonOptions = {
   src: string
   href: string
   borderRadius: string
+  isLoading: boolean
 
   message: React.ReactNode
   header: React.ReactNode
@@ -14,8 +15,19 @@ export type ModalButtonOptions = {
 }
 
 const useModalButton = ({ ...options }: ModalButtonOptions) => {
-  const { show, hide, setBorderRadius, setOnClickButton, setType, setTypes, setHeader, setHref, setMessage, setSrc } =
-    useContext(ModalContext)
+  const {
+    show,
+    setIsLoading,
+    hide,
+    setBorderRadius,
+    setOnClickButton,
+    setType,
+    setTypes,
+    setHeader,
+    setHref,
+    setMessage,
+    setSrc,
+  } = useContext(ModalContext)
 
   useEffect(() => {
     setType('button')
@@ -26,6 +38,7 @@ const useModalButton = ({ ...options }: ModalButtonOptions) => {
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickButton(options?.onClickButton)
+    setIsLoading(options.isLoading)
   }, [])
 
   return { show, hide }
