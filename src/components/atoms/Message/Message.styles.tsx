@@ -14,7 +14,7 @@ export const MessageSkeleton = styled.div<{ isLoading?: boolean }>`
     isLoading
       ? css`
           width: 80%;
-          height: 14px;
+          height: 18px;
           background-color: #c2cfd6;
           border-radius: 50px;
           animation: ${skeletonLoading} 1s linear infinite alternate;

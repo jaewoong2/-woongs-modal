@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import Modal from '../components/contents/Modal'
 import ModalButton from '../components/contents/ModalButton'
+import { ModalText } from '../components/contents/ModalText'
 
 export const IMAGE_MOCK_SRC =
   'https://uploads.codesandbox.io/uploads/user/7cd4bee2-a6f4-4c44-a3e9-f670ab1086d9/mnTc-large_.jpg'
@@ -9,26 +10,28 @@ type Props = {
   children?: React.ReactNode
 }
 
-type StateFunction = () => void | undefined
+type StateFunction = (() => void) | undefined
 
-type ModalType = 'normal' | 'button'
+type ModalType = 'normal' | 'button' | 'text'
 
 type ModalContextType = {
   show: () => void
   hide: () => void
-  setIsLoading: (b: boolean) => void
-  setType: (t: ModalType) => void
-  setSrc: (s: string) => void
-  setHref: (s: string) => void
-  setBorderRadius: (s: string) => void
-  setTypes: (s: 'primary' | 'warn') => void
-  setMessage: (c: React.ReactNode) => void
-  setHeader: (c: React.ReactNode) => void
-  setFooterLeftText: (c: React.ReactNode) => void
-  setFooterRightText: (c: React.ReactNode) => void
-  setOnClickFooterLeft: (cb: () => void) => void
-  setOnClickFooterRight: (cb: () => void) => void
-  setOnClickButton: (cb: () => void) => void
+  setIsLoading: (b?: boolean) => void
+  setType: (t?: ModalType) => void
+  setSrc: (s?: string) => void
+  setHref: (s?: string) => void
+  setButtonText: (s?: string) => void
+  setBorderRadius: (s?: string) => void
+  setTypes: (s?: 'primary' | 'warn') => void
+  setMessage: (c?: React.ReactNode) => void
+  setHeader: (c?: React.ReactNode) => void
+  setFooterLeftText: (c?: React.ReactNode) => void
+  setFooterRightText: (c?: React.ReactNode) => void
+  setDescription: (c?: React.ReactNode) => void
+  setOnClickFooterLeft: (cb?: () => void) => void
+  setOnClickFooterRight: (cb?: () => void) => void
+  setOnClickButton: (cb?: () => void) => void
 }
 
 const initialContextValue = {} as ModalContextType
@@ -40,12 +43,14 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [src, setSrc] = useState(IMAGE_MOCK_SRC)
   const [href, setHref] = useState('')
-  const [borderRadius, setBorderRadius] = useState('')
+  const [borderRadius, setBorderRadius] = useState('8px')
   const [type, setType] = useState<ModalType>('normal')
   const [types, setTypes] = useState<'primary' | 'warn'>('primary')
 
   const [message, setMessage] = useState<React.ReactNode | null>(null)
+  const [description, setDescription] = useState<React.ReactNode | null>(null)
   const [header, setHeader] = useState<React.ReactNode | null>(null)
+  const [buttonText, setButtonText] = useState<React.ReactNode | null>(null)
   const [footerLeftText, setFooterLeftText] = useState<React.ReactNode>('닫기')
   const [footerRightText, setFooterRightText] = useState<React.ReactNode>('확인')
 
@@ -58,12 +63,13 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
       value={{
         show: () => setIsShow(true),
         hide: () => setIsShow(false),
-        setIsLoading: (b) => setIsLoading(b),
-        setType: (t) => setType(t),
-        setSrc: (s) => setSrc(s),
-        setHref: (s) => setHref(s),
-        setTypes: (s) => setTypes(s),
-        setBorderRadius: (s) => setBorderRadius(s),
+        setIsLoading: (b) => setIsLoading(b ?? false),
+        setType: (t) => setType(t ?? 'normal'),
+        setSrc: (s) => setSrc(s ?? ''),
+        setHref: (s) => setHref(s ?? ''),
+        setButtonText: (s) => setButtonText(s),
+        setTypes: (s) => setTypes(s ?? 'primary'),
+        setBorderRadius: (s) => setBorderRadius(s ?? '8px'),
         setHeader: (c) => setHeader(c),
         setMessage: (c) => setMessage(c),
         setFooterLeftText: (c) => setFooterLeftText(c),
@@ -71,6 +77,7 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
         setOnClickFooterLeft: (cb) => setOnClickFooterLeft(cb),
         setOnClickFooterRight: (cb) => setOnClickFooterRight(cb),
         setOnClickButton: (cb) => setOnClickButton(cb),
+        setDescription: (c) => setDescription(c),
       }}
     >
       {children}
@@ -97,10 +104,26 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
           types={types}
           isLoading={isLoading}
           message={message}
+          buttonText={buttonText}
           header={header}
           borderRaidus={borderRadius}
           onClickButton={onClickButton}
         ></ModalButton>
+      )}
+      {isShow && type === 'text' && (
+        <ModalText
+          setHide={() => setIsShow(false)}
+          message={message}
+          isLoading={isLoading}
+          src={src}
+          types={types}
+          buttonText={buttonText}
+          href={href}
+          header={header}
+          borderRaidus={borderRadius}
+          onClickButton={onClickButton}
+          description={description}
+        ></ModalText>
       )}
     </ModalContext.Provider>
   )

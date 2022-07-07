@@ -38,7 +38,7 @@ const getButtonColor = (types: ButtonType) => {
 }
 
 export const Container = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

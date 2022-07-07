@@ -1,49 +1,47 @@
-import { IMAGE_MOCK_SRC, ModalContext } from './../context/ModalProvider'
+import { ModalContext } from '../context/ModalProvider'
 import { useContext, useEffect } from 'react'
 
-export type ModalButtonOptions = {
-  types?: 'primary' | 'warn'
+export type ModalTextOptions = {
   src?: string
   href?: string
   borderRadius?: string
   isLoading?: boolean
-  buttonText?: string
+
   message?: React.ReactNode
   header?: React.ReactNode
-
+  buttonText?: string
+  description?: React.ReactNode
   onClickButton?: () => void
 }
 
-const useModalButton = ({ ...options }: ModalButtonOptions) => {
+const useModalText = ({ ...options }: ModalTextOptions) => {
   const {
     show,
-    setIsLoading,
     hide,
     setBorderRadius,
-    setOnClickButton,
-    setType,
-    setTypes,
     setHeader,
     setHref,
-    setButtonText,
     setMessage,
-    setSrc,
+    setIsLoading,
+    setType,
+    setOnClickButton,
+    setDescription,
+    setButtonText,
   } = useContext(ModalContext)
 
   useEffect(() => {
-    setType('button')
+    setType('text')
     setBorderRadius(options?.borderRadius ?? '8px')
-    setSrc(options?.src ?? IMAGE_MOCK_SRC)
-    setHref(options?.href)
-    setTypes(options?.types)
+    setHref(options?.href ?? '')
     setHeader(options?.header)
     setMessage(options?.message)
+    setDescription(options?.description)
+    setIsLoading(options?.isLoading)
     setOnClickButton(options?.onClickButton)
-    setIsLoading(options.isLoading)
     setButtonText(options.buttonText)
   }, [options])
 
   return { show, hide }
 }
 
-export { useModalButton }
+export { useModalText }

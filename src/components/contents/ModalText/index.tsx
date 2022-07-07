@@ -1,11 +1,13 @@
 import React, { useCallback } from 'react'
+import Message from '../../atoms/Message'
 import ModalBody from '../../blocks/ModalBody'
 import ModalButtonFooter from '../../blocks/ModalButtonFooter'
-import { ModalContainer, ModalContents, ModalFooter, ModalHeader } from './ModalButton.styles'
+import { ModalContainer, ModalContents, ModalFooter, ModalHeader } from './ModalText.styles'
 
 type Props = {
   header: React.ReactNode
   message: React.ReactNode
+  description: React.ReactNode
   buttonText: React.ReactNode
   href: string
   src: string
@@ -16,15 +18,14 @@ type Props = {
   setHide: () => void
 }
 
-const ModalButton: React.FC<Props> = ({
+const ModalText: React.FC<Props> = ({
   isLoading,
   setHide,
   header,
   message,
   types,
   buttonText,
-  href,
-  src,
+  description,
   borderRaidus,
   onClickButton,
 }) => {
@@ -38,14 +39,18 @@ const ModalButton: React.FC<Props> = ({
     <ModalContainer onClick={handleModalView}>
       <ModalContents borderRaidus={borderRaidus ?? '8px'}>
         <ModalHeader>{header}</ModalHeader>
-        <ModalBody
-          isLoading={isLoading}
-          className="modal--body"
-          href={href}
-          src={src}
-          alt={`${header}`}
-          message={message}
-        />
+        <div className="messages-container">
+          <div className="title-container">
+            <Message className="title" isLoading={isLoading}>
+              {message}
+            </Message>
+          </div>
+          <div className="description-container">
+            <Message className="description" isLoading={isLoading}>
+              {description}
+            </Message>
+          </div>
+        </div>
         <ModalFooter>
           <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
             {buttonText}
@@ -56,4 +61,4 @@ const ModalButton: React.FC<Props> = ({
   )
 }
 
-export default ModalButton
+export { ModalText }

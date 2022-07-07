@@ -1,18 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import ModalButton from './index'
+import { ModalText } from './index'
 // import { useToast } from '@jaewoong2/toast'
-import { ModalButtonOptions, useModalButton } from '../../../hooks/useModalButton'
+import { useModalText, ModalTextOptions } from '../../../hooks/useModalText'
 
 export default {
-  title: 'Block/ModalButton',
-  component: ModalButton,
+  title: 'Block/ModalText',
+  component: ModalText,
   argTypes: {},
-} as ComponentMeta<typeof ModalButton>
+} as ComponentMeta<typeof ModalText>
 
-const Template = ({ ...options }: ModalButtonOptions) => {
-  const [option, setOption] = useState<ModalButtonOptions>()
-  const { show, hide } = useModalButton({ isLoading: true, ...option })
+const Template = ({ ...options }: ModalTextOptions) => {
+  const [option, setOption] = useState<ModalTextOptions>()
+  const { show, hide } = useModalText({ isLoading: true, ...option })
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,7 +32,8 @@ const Template = ({ ...options }: ModalButtonOptions) => {
 
 export const Primary = Template.bind({})
 Primary.args = {
-  message: 'ModalButton Message',
+  message: 'ModalText Message',
+  description: 'ModalText Message',
   isLoading: false,
   buttonText: 'Button Text Message',
 }
@@ -44,6 +45,7 @@ Skeleton.args = {
 
 export const LongText = Template.bind({})
 LongText.args = {
+  description: 'ModalText Description',
   message:
     'Text is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very long ',
   buttonText: 'Button Text Message',

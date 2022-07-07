@@ -2,18 +2,18 @@ import { IMAGE_MOCK_SRC, ModalContext } from '../context/ModalProvider'
 import { useContext, useEffect } from 'react'
 
 export type ModalNoramlOptions = {
-  src: string
-  href: string
-  borderRadius: string
-  isLoading: boolean
+  src?: string
+  href?: string
+  borderRadius?: string
+  isLoading?: boolean
 
-  message: React.ReactNode
-  header: React.ReactNode
-  footerLeftText: React.ReactNode
-  footerRightText: React.ReactNode
+  message?: React.ReactNode
+  header?: React.ReactNode
+  footerLeftText?: React.ReactNode
+  footerRightText?: React.ReactNode
 
-  onClickFooterLeft: () => void
-  onClickFooterRight: () => void
+  onClickFooterLeft?: () => void
+  onClickFooterRight?: () => void
 }
 
 const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
@@ -39,13 +39,13 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     setFooterLeftText(options?.footerLeftText ?? '닫기')
     setFooterRightText(options?.footerRightText ?? '확인')
     setSrc(options?.src ?? IMAGE_MOCK_SRC)
-    setHref(options?.href)
+    setHref(options?.href ?? '')
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickFooterLeft(options?.onClickFooterLeft)
     setOnClickFooterRight(options?.onClickFooterRight)
-    setIsLoading(options.isLoading)
-  }, [])
+    setIsLoading(options?.isLoading)
+  }, [options])
 
   return { show, hide }
 }

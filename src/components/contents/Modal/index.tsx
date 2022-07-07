@@ -12,10 +12,10 @@ type Props = {
   borderRaidus: string
 
   footerRightText: React.ReactNode
-  onClickFooterRight: () => void
+  onClickFooterRight?: () => void
 
   footerLeftText: React.ReactNode
-  onClickFooterLeft: () => void
+  onClickFooterLeft?: () => void
 
   setHide: () => void
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import DefferedComponent from '../../atoms/Defferd'
 import { Image } from '../../atoms/Image'
 import Message from '../../atoms/Message'
 import { ModalAncher, ModalImageContainer, ModalBodyContainer } from './ModalBody.styles'
@@ -15,12 +16,14 @@ type Props = {
 const ModalBody: React.FC<Props> = ({ isLoading, href, alt, src, message, className }) => {
   return (
     <ModalAncher className={className} href={href}>
-      <ModalImageContainer>
-        <Image isLoading={isLoading} src={src} alt={alt} />
-      </ModalImageContainer>
-      <ModalBodyContainer>
-        <Message isLoading={isLoading}>{message}</Message>
-      </ModalBodyContainer>
+      <DefferedComponent isLoaded={!isLoading}>
+        <ModalImageContainer>
+          <Image isLoading={isLoading} src={src} alt={alt} />
+        </ModalImageContainer>
+        <ModalBodyContainer>
+          <Message isLoading={isLoading}>{message}</Message>
+        </ModalBodyContainer>
+      </DefferedComponent>
     </ModalAncher>
   )
 }
