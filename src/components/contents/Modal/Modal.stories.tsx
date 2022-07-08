@@ -16,7 +16,7 @@ const Template = ({ ...options }: ModalNoramlOptions) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setOption({ ...options })
-    }, 1500)
+    }, 1200)
 
     return () => clearTimeout(timer)
   }, [options])
