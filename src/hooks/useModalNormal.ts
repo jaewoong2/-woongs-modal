@@ -4,8 +4,8 @@ import { useContext, useEffect } from 'react'
 export type ModalNoramlOptions = {
   src?: string
   isLoading?: boolean
-  borderRadius?: string
   modalWidth?: string
+  borderRadius?: string
 
   message?: React.ReactNode
   header?: React.ReactNode
