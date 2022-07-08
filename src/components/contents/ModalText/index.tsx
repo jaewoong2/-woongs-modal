@@ -8,13 +8,13 @@ type ModalTextProps = {
   message: React.ReactNode
   description: React.ReactNode
   buttonText: React.ReactNode
-  src: string
   isLoading: boolean
-  modalWidth: string
-  borderRaidus: string
-  types: 'primary' | 'warn' | 'normal'
   onClickButton?: () => void
   setHide: () => void
+
+  modalWidth?: string
+  borderRaidus?: string
+  types?: 'primary' | 'warn' | 'normal'
 }
 
 const ModalText: React.FC<ModalTextProps> = ({
@@ -34,7 +34,6 @@ const ModalText: React.FC<ModalTextProps> = ({
       modalWidth={modalWidth}
       borderRaidus={borderRaidus}
       header={header}
-      isLoading={isLoading}
       setHide={setHide}
       body={<ModalTextBody description={description} isLoading={isLoading} message={message} />}
       footer={

@@ -2,7 +2,6 @@ import { ModalContext } from '../context/ModalProvider'
 import { useContext, useEffect } from 'react'
 
 export type ModalTextOptions = {
-  src?: string
   borderRadius?: string
   isLoading?: boolean
   message?: React.ReactNode

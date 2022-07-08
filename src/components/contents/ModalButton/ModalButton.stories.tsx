@@ -32,7 +32,7 @@ const Template = ({ ...options }: ModalButtonOptions) => {
 export const Primary = Template.bind({})
 Primary.args = {
   message: 'ModalButton Message',
-  modalWidth: '100px',
+  modalWidth: '450px',
   isLoading: false,
   buttonText: 'Button Text Message',
 }

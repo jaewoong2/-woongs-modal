@@ -2,8 +2,7 @@ import React, { useCallback } from 'react'
 import { ModalContainer, ModalHeader, ModalContents, ModalFooter } from './ModalBasic.styles'
 
 type ModalBasicProps = {
-  isLoading: boolean
-  borderRaidus: string
+  borderRaidus?: string
   modalWidth?: string
 
   header: React.ReactNode

@@ -10,7 +10,6 @@ export type ModalButtonOptions = {
   message?: React.ReactNode
   header?: React.ReactNode
   modalWidth?: string
-
   onClickButton?: () => void
 }
 

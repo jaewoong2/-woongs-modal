@@ -7,11 +7,14 @@ type Props = {
   header: React.ReactNode
   message: React.ReactNode
   buttonText: React.ReactNode
-  src: string
+
   isLoading: boolean
-  modalWidth: string
-  borderRaidus: string
-  types: 'primary' | 'warn' | 'normal'
+
+  src?: string
+  modalWidth?: string
+  borderRaidus?: string
+  types?: 'primary' | 'warn' | 'normal'
+
   onClickButton?: () => void
   setHide: () => void
 }
@@ -32,7 +35,6 @@ const ModalButton: React.FC<Props> = ({
     <ModalBasic
       borderRaidus={borderRaidus}
       header={header}
-      isLoading={isLoading}
       setHide={setHide}
       modalWidth={modalWidth}
       body={<ModalBody isLoading={isLoading} className="modal--body" src={src} alt={`${header}`} message={message} />}
