@@ -2,14 +2,13 @@ import styled from '@emotion/styled'
 
 type ModalContentsProps = {
   borderRaidus: string
+  modalWidth?: string
 }
 
 const marginValue = {
   x: 20,
   y: 20,
 }
-
-const modalWidth = '450px'
 
 export const ModalContainer = styled.section`
   width: 100%;
@@ -26,8 +25,9 @@ export const ModalContainer = styled.section`
   z-index: 9998;
 `
 
-export const ModalContents = styled.div<ModalContentsProps>`
-  width: ${modalWidth};
+export const ModalContents = styled.section<ModalContentsProps>`
+  width: ${({ modalWidth }) => modalWidth ?? '450px'};
+
   background-color: white;
   border-radius: ${({ borderRaidus }) => borderRaidus};
 
@@ -35,12 +35,12 @@ export const ModalContents = styled.div<ModalContentsProps>`
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 `
 
-export const ModalHeader = styled.div`
+export const ModalHeader = styled.section`
   margin: ${marginValue.y}px;
 `
 
-export const ModalFooter = styled.div`
+export const ModalFooter = styled.section`
   display: flex;
-  justify-content: center;
-  padding: 0px ${marginValue.x}px 20px ${marginValue.x}px;
+  justify-content: space-between;
+  padding: 10px ${marginValue.x}px;
 `

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { ModalText } from './index'
-// import { useToast } from '@jaewoong2/toast'
 import { useModalText, ModalTextOptions } from '../../../hooks/useModalText'
 
 export default {
@@ -47,7 +46,16 @@ export const LongText = Template.bind({})
 LongText.args = {
   description: 'ModalText Description',
   message:
-    'Text is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very long ',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula bibendum nisl ac mattis. Pellentesque nec lectus massa. Sed consequat aliquet consequat. Sed commodo lectus at placerat elementum. Duis non eros eu libero feugiat tincidunt eu quis nulla. Mauris viverra ipsum eget arcu mollis, vitae tempus ipsum tempus. Nulla faucibus, nunc non pulvinar cursus, augue nisl iaculis ligula, in laoreet ipsum dolor a arcu. Phasellus vel aliquam felis. Praesent enim felis, pretium semper varius a, sagittis quis neque. Sed non',
+  buttonText: 'Button Text Message',
+  isLoading: false,
+}
+
+export const Warn = Template.bind({})
+Warn.args = {
+  types: 'warn',
+  description: 'ModalText Description',
+  message: 'Warnning',
   buttonText: 'Button Text Message',
   isLoading: false,
 }

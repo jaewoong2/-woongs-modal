@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react'
+import ModalBasic from '../../blocks/ModalBasic'
 import ModalBody from '../../blocks/ModalBody'
 import ModalNormalFooter from '../../blocks/ModalNormalFooter'
-import { ModalContainer, ModalContents, ModalFooter, ModalHeader } from './Modal.styles'
 
 type Props = {
   header: React.ReactNode
   message: React.ReactNode
-  href: string
   src: string
   isLoading: boolean
   borderRaidus: string
+  modalWidth: string
 
   footerRightText: React.ReactNode
   onClickFooterRight?: () => void
@@ -25,9 +25,9 @@ const Modal: React.FC<Props> = ({
   header,
   message,
   isLoading,
-  href,
   src,
   borderRaidus,
+  modalWidth,
   footerRightText,
   footerLeftText,
   onClickFooterRight,
@@ -40,21 +40,23 @@ const Modal: React.FC<Props> = ({
   }, [])
 
   return (
-    <ModalContainer onClick={handleModalView}>
-      <ModalContents borderRaidus={borderRaidus ?? '8px'}>
-        <ModalHeader>{header}</ModalHeader>
-        <ModalBody isLoading={isLoading} href={href} src={src} alt={`${header}`} message={message} />
-        <ModalFooter>
-          <ModalNormalFooter
-            onClickFooterLeft={onClickFooterLeft}
-            onClickFooterRight={onClickFooterRight}
-            footerLeftText={footerLeftText}
-            footerRightText={footerRightText}
-            closeModal={handleModalView}
-          />
-        </ModalFooter>
-      </ModalContents>
-    </ModalContainer>
+    <ModalBasic
+      borderRaidus={borderRaidus}
+      header={header}
+      isLoading={isLoading}
+      modalWidth={modalWidth}
+      setHide={setHide}
+      body={<ModalBody isLoading={isLoading} src={src} alt={`${header}`} message={message} />}
+      footer={
+        <ModalNormalFooter
+          onClickFooterLeft={onClickFooterLeft}
+          onClickFooterRight={onClickFooterRight}
+          footerLeftText={footerLeftText}
+          footerRightText={footerRightText}
+          closeModal={handleModalView}
+        />
+      }
+    />
   )
 }
 

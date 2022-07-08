@@ -3,9 +3,9 @@ import { useContext, useEffect } from 'react'
 
 export type ModalNoramlOptions = {
   src?: string
-  href?: string
   borderRadius?: string
   isLoading?: boolean
+  modalWidth?: string
 
   message?: React.ReactNode
   header?: React.ReactNode
@@ -22,9 +22,9 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     hide,
     setBorderRadius,
     setFooterLeftText,
+    setModalWidth,
     setFooterRightText,
     setHeader,
-    setHref,
     setMessage,
     setOnClickFooterLeft,
     setIsLoading,
@@ -39,12 +39,12 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     setFooterLeftText(options?.footerLeftText ?? '닫기')
     setFooterRightText(options?.footerRightText ?? '확인')
     setSrc(options?.src ?? IMAGE_MOCK_SRC)
-    setHref(options?.href ?? '')
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickFooterLeft(options?.onClickFooterLeft)
     setOnClickFooterRight(options?.onClickFooterRight)
     setIsLoading(options?.isLoading)
+    setModalWidth(options.modalWidth)
   }, [options])
 
   return { show, hide }

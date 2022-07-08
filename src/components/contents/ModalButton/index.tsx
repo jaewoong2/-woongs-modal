@@ -1,17 +1,17 @@
-import React, { useCallback } from 'react'
+import React, { useEffect } from 'react'
+import ModalBasic from '../../blocks/ModalBasic'
 import ModalBody from '../../blocks/ModalBody'
 import ModalButtonFooter from '../../blocks/ModalButtonFooter'
-import { ModalContainer, ModalContents, ModalFooter, ModalHeader } from './ModalButton.styles'
 
 type Props = {
   header: React.ReactNode
   message: React.ReactNode
   buttonText: React.ReactNode
-  href: string
   src: string
   isLoading: boolean
+  modalWidth: string
   borderRaidus: string
-  types: 'primary' | 'warn'
+  types: 'primary' | 'warn' | 'normal'
   onClickButton?: () => void
   setHide: () => void
 }
@@ -23,36 +23,25 @@ const ModalButton: React.FC<Props> = ({
   message,
   types,
   buttonText,
-  href,
   src,
   borderRaidus,
   onClickButton,
+  modalWidth,
 }) => {
-  const handleModalView = useCallback((e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (e?.target === e?.currentTarget) {
-      setHide()
-    }
-  }, [])
-
   return (
-    <ModalContainer onClick={handleModalView}>
-      <ModalContents borderRaidus={borderRaidus ?? '8px'}>
-        <ModalHeader>{header}</ModalHeader>
-        <ModalBody
-          isLoading={isLoading}
-          className="modal--body"
-          href={href}
-          src={src}
-          alt={`${header}`}
-          message={message}
-        />
-        <ModalFooter>
-          <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
-            {buttonText}
-          </ModalButtonFooter>
-        </ModalFooter>
-      </ModalContents>
-    </ModalContainer>
+    <ModalBasic
+      borderRaidus={borderRaidus}
+      header={header}
+      isLoading={isLoading}
+      setHide={setHide}
+      modalWidth={modalWidth}
+      body={<ModalBody isLoading={isLoading} className="modal--body" src={src} alt={`${header}`} message={message} />}
+      footer={
+        <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
+          {buttonText}
+        </ModalButtonFooter>
+      }
+    />
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import Modal from '../components/contents/Modal'
 import ModalButton from '../components/contents/ModalButton'
 import { ModalText } from '../components/contents/ModalText'
@@ -20,10 +20,10 @@ type ModalContextType = {
   setIsLoading: (b?: boolean) => void
   setType: (t?: ModalType) => void
   setSrc: (s?: string) => void
-  setHref: (s?: string) => void
   setButtonText: (s?: string) => void
+  setModalWidth: (s?: string) => void
   setBorderRadius: (s?: string) => void
-  setTypes: (s?: 'primary' | 'warn') => void
+  setTypes: (s?: 'primary' | 'warn' | 'normal') => void
   setMessage: (c?: React.ReactNode) => void
   setHeader: (c?: React.ReactNode) => void
   setFooterLeftText: (c?: React.ReactNode) => void
@@ -42,10 +42,10 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   const [isShow, setIsShow] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [src, setSrc] = useState(IMAGE_MOCK_SRC)
-  const [href, setHref] = useState('')
   const [borderRadius, setBorderRadius] = useState('8px')
+  const [modalWidth, setModalWidth] = useState('450px')
   const [type, setType] = useState<ModalType>('normal')
-  const [types, setTypes] = useState<'primary' | 'warn'>('primary')
+  const [types, setTypes] = useState<'primary' | 'warn' | 'normal'>('primary')
 
   const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [description, setDescription] = useState<React.ReactNode | null>(null)
@@ -66,10 +66,10 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
         setIsLoading: (b) => setIsLoading(b ?? false),
         setType: (t) => setType(t ?? 'normal'),
         setSrc: (s) => setSrc(s ?? ''),
-        setHref: (s) => setHref(s ?? ''),
         setButtonText: (s) => setButtonText(s),
         setTypes: (s) => setTypes(s ?? 'primary'),
         setBorderRadius: (s) => setBorderRadius(s ?? '8px'),
+        setModalWidth: (s) => setModalWidth(s ?? '450px'),
         setHeader: (c) => setHeader(c),
         setMessage: (c) => setMessage(c),
         setFooterLeftText: (c) => setFooterLeftText(c),
@@ -85,45 +85,45 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
         <Modal
           setHide={() => setIsShow(false)}
           message={message}
+          modalWidth={modalWidth}
           isLoading={isLoading}
           src={src}
-          href={href}
           header={header}
           borderRaidus={borderRadius}
           footerLeftText={footerLeftText}
           footerRightText={footerRightText}
           onClickFooterLeft={onClickFooterLeft}
           onClickFooterRight={onClickFooterRight}
-        ></Modal>
+        />
       )}
       {isShow && type === 'button' && (
         <ModalButton
           setHide={() => setIsShow(false)}
           src={src}
-          href={href}
           types={types}
           isLoading={isLoading}
+          modalWidth={modalWidth}
           message={message}
           buttonText={buttonText}
           header={header}
           borderRaidus={borderRadius}
           onClickButton={onClickButton}
-        ></ModalButton>
+        />
       )}
       {isShow && type === 'text' && (
         <ModalText
+          modalWidth={modalWidth}
           setHide={() => setIsShow(false)}
           message={message}
           isLoading={isLoading}
           src={src}
           types={types}
           buttonText={buttonText}
-          href={href}
           header={header}
           borderRaidus={borderRadius}
           onClickButton={onClickButton}
           description={description}
-        ></ModalText>
+        />
       )}
     </ModalContext.Provider>
   )

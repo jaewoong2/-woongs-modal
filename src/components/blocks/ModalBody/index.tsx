@@ -2,10 +2,9 @@ import React from 'react'
 import DefferedComponent from '../../atoms/Defferd'
 import { Image } from '../../atoms/Image'
 import Message from '../../atoms/Message'
-import { ModalAncher, ModalImageContainer, ModalBodyContainer } from './ModalBody.styles'
+import { ModalImageContainer, ModalBodyContainer, ModalMessageContainer } from './ModalBody.styles'
 
 type Props = {
-  href?: string
   src?: string
   className?: string
   isLoading: boolean
@@ -13,18 +12,18 @@ type Props = {
   message?: React.ReactNode
 }
 
-const ModalBody: React.FC<Props> = ({ isLoading, href, alt, src, message, className }) => {
+const ModalBody: React.FC<Props> = ({ isLoading, alt, src, message, className }) => {
   return (
-    <ModalAncher className={className} href={href}>
+    <ModalBodyContainer className={className}>
       <DefferedComponent isLoaded={!isLoading}>
         <ModalImageContainer>
           <Image isLoading={isLoading} src={src} alt={alt} />
         </ModalImageContainer>
-        <ModalBodyContainer>
+        <ModalMessageContainer>
           <Message isLoading={isLoading}>{message}</Message>
-        </ModalBodyContainer>
+        </ModalMessageContainer>
       </DefferedComponent>
-    </ModalAncher>
+    </ModalBodyContainer>
   )
 }
 

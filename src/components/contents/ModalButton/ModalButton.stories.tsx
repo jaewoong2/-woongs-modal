@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import ModalButton from './index'
-// import { useToast } from '@jaewoong2/toast'
 import { ModalButtonOptions, useModalButton } from '../../../hooks/useModalButton'
 
 export default {
@@ -33,6 +32,7 @@ const Template = ({ ...options }: ModalButtonOptions) => {
 export const Primary = Template.bind({})
 Primary.args = {
   message: 'ModalButton Message',
+  modalWidth: '100px',
   isLoading: false,
   buttonText: 'Button Text Message',
 }
@@ -44,8 +44,9 @@ Skeleton.args = {
 
 export const LongText = Template.bind({})
 LongText.args = {
+  description: 'ModalText Description',
   message:
-    'Text is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very longText is very long Text is very long Text is very long Text is very long Text is very long ',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula bibendum nisl ac mattis. Pellentesque nec lectus massa. Sed consequat aliquet consequat. Sed commodo lectus at placerat elementum. Duis non eros eu libero feugiat tincidunt eu quis nulla. Mauris viverra ipsum eget arcu mollis, vitae tempus ipsum tempus. Nulla faucibus, nunc non pulvinar cursus, augue nisl iaculis ligula, in laoreet ipsum dolor a arcu. Phasellus vel aliquam felis. Praesent enim felis, pretium semper varius a, sagittis quis neque. Sed non',
   buttonText: 'Button Text Message',
   isLoading: false,
 }

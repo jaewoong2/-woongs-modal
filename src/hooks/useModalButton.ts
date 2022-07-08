@@ -4,12 +4,12 @@ import { useContext, useEffect } from 'react'
 export type ModalButtonOptions = {
   types?: 'primary' | 'warn'
   src?: string
-  href?: string
   borderRadius?: string
   isLoading?: boolean
   buttonText?: string
   message?: React.ReactNode
   header?: React.ReactNode
+  modalWidth?: string
 
   onClickButton?: () => void
 }
@@ -24,8 +24,8 @@ const useModalButton = ({ ...options }: ModalButtonOptions) => {
     setType,
     setTypes,
     setHeader,
-    setHref,
     setButtonText,
+    setModalWidth,
     setMessage,
     setSrc,
   } = useContext(ModalContext)
@@ -34,13 +34,13 @@ const useModalButton = ({ ...options }: ModalButtonOptions) => {
     setType('button')
     setBorderRadius(options?.borderRadius ?? '8px')
     setSrc(options?.src ?? IMAGE_MOCK_SRC)
-    setHref(options?.href)
     setTypes(options?.types)
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickButton(options?.onClickButton)
     setIsLoading(options.isLoading)
     setButtonText(options.buttonText)
+    setModalWidth(options.modalWidth)
   }, [options])
 
   return { show, hide }

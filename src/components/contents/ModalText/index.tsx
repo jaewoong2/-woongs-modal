@@ -1,24 +1,23 @@
-import React, { useCallback } from 'react'
-import Message from '../../atoms/Message'
-import ModalBody from '../../blocks/ModalBody'
+import React from 'react'
+import ModalBasic from '../../blocks/ModalBasic'
 import ModalButtonFooter from '../../blocks/ModalButtonFooter'
-import { ModalContainer, ModalContents, ModalFooter, ModalHeader } from './ModalText.styles'
+import ModalTextBody from '../../blocks/ModalTextBody'
 
-type Props = {
+type ModalTextProps = {
   header: React.ReactNode
   message: React.ReactNode
   description: React.ReactNode
   buttonText: React.ReactNode
-  href: string
   src: string
   isLoading: boolean
+  modalWidth: string
   borderRaidus: string
-  types: 'primary' | 'warn'
+  types: 'primary' | 'warn' | 'normal'
   onClickButton?: () => void
   setHide: () => void
 }
 
-const ModalText: React.FC<Props> = ({
+const ModalText: React.FC<ModalTextProps> = ({
   isLoading,
   setHide,
   header,
@@ -28,36 +27,22 @@ const ModalText: React.FC<Props> = ({
   description,
   borderRaidus,
   onClickButton,
+  modalWidth,
 }) => {
-  const handleModalView = useCallback((e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (e?.target === e?.currentTarget) {
-      setHide()
-    }
-  }, [])
-
   return (
-    <ModalContainer onClick={handleModalView}>
-      <ModalContents borderRaidus={borderRaidus ?? '8px'}>
-        <ModalHeader>{header}</ModalHeader>
-        <div className="messages-container">
-          <div className="title-container">
-            <Message className="title" isLoading={isLoading}>
-              {message}
-            </Message>
-          </div>
-          <div className="description-container">
-            <Message className="description" isLoading={isLoading}>
-              {description}
-            </Message>
-          </div>
-        </div>
-        <ModalFooter>
-          <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
-            {buttonText}
-          </ModalButtonFooter>
-        </ModalFooter>
-      </ModalContents>
-    </ModalContainer>
+    <ModalBasic
+      modalWidth={modalWidth}
+      borderRaidus={borderRaidus}
+      header={header}
+      isLoading={isLoading}
+      setHide={setHide}
+      body={<ModalTextBody description={description} isLoading={isLoading} message={message} />}
+      footer={
+        <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
+          {buttonText}
+        </ModalButtonFooter>
+      }
+    />
   )
 }
 

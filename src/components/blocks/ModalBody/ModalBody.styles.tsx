@@ -1,15 +1,13 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 const marginValue = {
   x: 20,
   y: 20,
 }
 
-export const ModalAncher = styled.a`
+export const ModalBodyContainer = styled.section`
   width: fit-content;
   height: fit-content;
 
-  text-decoration: none;
   color: inherit;
 
   display: flex;
@@ -29,7 +27,7 @@ export const ModalImageContainer = styled.picture`
     height: 100%;
   }
 `
-export const ModalBodyContainer = styled.div`
+export const ModalMessageContainer = styled.section`
   width: 100%;
   margin: ${marginValue.y}px ${marginValue.x}px;
   margin-bottom: 0px;

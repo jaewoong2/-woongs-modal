@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 const primaryColor = '#3e79ff'
 const warnColor = '#ff0000'
 
-export const Container = styled.div`
+export const Container = styled.footer`
   width: 100%;
   display: flex;
   justify-content: center;
