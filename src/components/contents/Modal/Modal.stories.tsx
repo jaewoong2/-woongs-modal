@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import Modal from './index'
-import { useModalNormal, ModalNoramlOptions } from '../../../hooks/useModalNoraml'
+import { useModalNormal, ModalNoramlOptions } from '../../../hooks/useModalNormal'
 
 export default {
   title: 'Block/Modal',
