@@ -8,7 +8,7 @@ export type ModalTextOptions = {
   header?: React.ReactNode
   buttonText?: string
   modalWidth?: string
-  types: 'normal' | 'primary' | 'warn'
+  types?: 'normal' | 'primary' | 'warn'
   description?: React.ReactNode
   onClickButton?: () => void
 }
