@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { ModalText } from './index'
-import { useModalText, ModalTextOptions } from '../../../hooks/useModalText'
+import { useModal } from '../../../hooks/useModal'
+import { ModalTextOptions } from '../../../types'
 
 export default {
   title: 'Block/ModalText',
@@ -9,9 +10,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ModalText>
 
-const Template = ({ ...options }: ModalTextOptions) => {
+const Template = ({ ...options }) => {
   const [option, setOption] = useState<ModalTextOptions>()
-  const { show, hide } = useModalText({ isLoading: true, ...option })
+  const { show, hide } = useModal('text', { isLoading: true, ...option })
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,7 +20,7 @@ const Template = ({ ...options }: ModalTextOptions) => {
     }, 1200)
 
     return () => clearTimeout(timer)
-  }, [options])
+  }, [])
 
   return (
     <div style={{ width: '400px', height: '400px', background: '#d9d9d9', position: 'relative' }}>
@@ -53,9 +54,18 @@ LongText.args = {
 
 export const Warn = Template.bind({})
 Warn.args = {
-  types: 'warn',
+  buttonType: 'warn',
   description: 'ModalText Description',
   message: 'Warnning',
+  buttonText: 'Button Text Message',
+  isLoading: false,
+}
+
+export const Normal = Template.bind({})
+Normal.args = {
+  buttonType: 'normal',
+  description: 'ModalText Description',
+  message: 'Normal Text',
   buttonText: 'Button Text Message',
   isLoading: false,
 }

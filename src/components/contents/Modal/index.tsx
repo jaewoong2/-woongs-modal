@@ -6,10 +6,7 @@ import ModalNormalFooter from '../../blocks/ModalNormalFooter'
 type Props = {
   header: React.ReactNode
   message: React.ReactNode
-  src: string
   isLoading: boolean
-  borderRaidus: string
-  modalWidth: string
 
   footerRightText: React.ReactNode
   onClickFooterRight?: () => void
@@ -18,6 +15,10 @@ type Props = {
   onClickFooterLeft?: () => void
 
   setHide: () => void
+
+  src?: string
+  modalWidth?: string
+  borderRaidus?: string
 }
 
 const Modal: React.FC<Props> = ({
@@ -43,7 +44,6 @@ const Modal: React.FC<Props> = ({
     <ModalBasic
       borderRaidus={borderRaidus}
       header={header}
-      isLoading={isLoading}
       modalWidth={modalWidth}
       setHide={setHide}
       body={<ModalBody isLoading={isLoading} src={src} alt={`${header}`} message={message} />}

@@ -9,7 +9,7 @@ const skeletonLoading = keyframes`
     background-color: hsl(200, 20%, 95%);
   }
 `
-export const MessageSkeleton = styled.p<{ isLoading?: boolean }>`
+export const MessageSkeleton = styled.div<{ isLoading?: boolean }>`
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;

@@ -1,18 +1,6 @@
-import { ModalContext } from '../context/ModalProvider'
+import { ModalTextOptions } from './../types/index'
+import { ModalTextContext } from './../context/ModalTextProvider'
 import { useContext, useEffect } from 'react'
-
-export type ModalTextOptions = {
-  src?: string
-  borderRadius?: string
-  isLoading?: boolean
-  message?: React.ReactNode
-  header?: React.ReactNode
-  buttonText?: string
-  modalWidth?: string
-  types: 'normal' | 'primary' | 'warn'
-  description?: React.ReactNode
-  onClickButton?: () => void
-}
 
 const useModalText = ({ ...options }: ModalTextOptions) => {
   const {
@@ -22,17 +10,15 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setHeader,
     setMessage,
     setIsLoading,
-    setType,
-    setTypes,
+    setButtonType,
     setOnClickButton,
     setDescription,
     setButtonText,
     setModalWidth,
-  } = useContext(ModalContext)
+  } = useContext(ModalTextContext)
 
   useEffect(() => {
-    setType('text')
-    setBorderRadius(options?.borderRadius ?? '8px')
+    setBorderRadius(options?.borderRadius)
     setHeader(options?.header)
     setMessage(options?.message)
     setDescription(options?.description)
@@ -40,7 +26,7 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setOnClickButton(options?.onClickButton)
     setModalWidth(options.modalWidth)
     setButtonText(options.buttonText)
-    setTypes(options.types ?? 'primary')
+    setButtonType(options.buttonType)
   }, [options])
 
   return { show, hide }

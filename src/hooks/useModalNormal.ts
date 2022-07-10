@@ -1,22 +1,8 @@
-import { IMAGE_MOCK_SRC, ModalContext } from '../context/ModalProvider'
+import { ModalNormalOptions } from './../types/index'
+import { ModalNormalContext } from './../context/ModalNormalProvider'
 import { useContext, useEffect } from 'react'
 
-export type ModalNoramlOptions = {
-  src?: string
-  isLoading?: boolean
-  modalWidth?: string
-  borderRadius?: string
-
-  message?: React.ReactNode
-  header?: React.ReactNode
-  footerLeftText?: React.ReactNode
-  footerRightText?: React.ReactNode
-
-  onClickFooterLeft?: () => void
-  onClickFooterRight?: () => void
-}
-
-const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
+const useModalNormal = ({ ...options }: ModalNormalOptions) => {
   const {
     show,
     hide,
@@ -28,17 +14,15 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     setMessage,
     setOnClickFooterLeft,
     setIsLoading,
-    setType,
     setOnClickFooterRight,
     setSrc,
-  } = useContext(ModalContext)
+  } = useContext(ModalNormalContext)
 
   useEffect(() => {
-    setType('normal')
-    setBorderRadius(options?.borderRadius ?? '8px')
-    setFooterLeftText(options?.footerLeftText ?? '닫기')
-    setFooterRightText(options?.footerRightText ?? '확인')
-    setSrc(options?.src ?? IMAGE_MOCK_SRC)
+    setBorderRadius(options?.borderRadius)
+    setFooterLeftText(options?.footerLeftText)
+    setFooterRightText(options?.footerRightText)
+    setSrc(options?.src)
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickFooterLeft(options?.onClickFooterLeft)

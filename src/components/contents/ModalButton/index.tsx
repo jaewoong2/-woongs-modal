@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { ButtonType } from '../../../types'
 import ModalBasic from '../../blocks/ModalBasic'
 import ModalBody from '../../blocks/ModalBody'
 import ModalButtonFooter from '../../blocks/ModalButtonFooter'
@@ -7,11 +8,14 @@ type Props = {
   header: React.ReactNode
   message: React.ReactNode
   buttonText: React.ReactNode
-  src: string
+
   isLoading: boolean
-  modalWidth: string
-  borderRaidus: string
-  types: 'primary' | 'warn' | 'normal'
+
+  src?: string
+  modalWidth?: string
+  borderRaidus?: string
+  buttonType?: ButtonType
+
   onClickButton?: () => void
   setHide: () => void
 }
@@ -21,7 +25,7 @@ const ModalButton: React.FC<Props> = ({
   setHide,
   header,
   message,
-  types,
+  buttonType,
   buttonText,
   src,
   borderRaidus,
@@ -32,12 +36,11 @@ const ModalButton: React.FC<Props> = ({
     <ModalBasic
       borderRaidus={borderRaidus}
       header={header}
-      isLoading={isLoading}
       setHide={setHide}
       modalWidth={modalWidth}
       body={<ModalBody isLoading={isLoading} className="modal--body" src={src} alt={`${header}`} message={message} />}
       footer={
-        <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
+        <ModalButtonFooter buttonType={buttonType ?? 'primary'} onClickButton={onClickButton}>
           {buttonText}
         </ModalButtonFooter>
       }

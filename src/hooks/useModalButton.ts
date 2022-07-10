@@ -1,18 +1,6 @@
-import { IMAGE_MOCK_SRC, ModalContext } from './../context/ModalProvider'
+import { ModalButtonOptions } from './../types/index'
+import { ModalButtonContext } from './../context/ModalButtonProvider'
 import { useContext, useEffect } from 'react'
-
-export type ModalButtonOptions = {
-  types?: 'primary' | 'warn'
-  src?: string
-  borderRadius?: string
-  isLoading?: boolean
-  buttonText?: string
-  message?: React.ReactNode
-  header?: React.ReactNode
-  modalWidth?: string
-
-  onClickButton?: () => void
-}
 
 const useModalButton = ({ ...options }: ModalButtonOptions) => {
   const {
@@ -21,20 +9,18 @@ const useModalButton = ({ ...options }: ModalButtonOptions) => {
     hide,
     setBorderRadius,
     setOnClickButton,
-    setType,
-    setTypes,
+    setButtonType,
     setHeader,
     setButtonText,
     setModalWidth,
     setMessage,
     setSrc,
-  } = useContext(ModalContext)
+  } = useContext(ModalButtonContext)
 
   useEffect(() => {
-    setType('button')
-    setBorderRadius(options?.borderRadius ?? '8px')
-    setSrc(options?.src ?? IMAGE_MOCK_SRC)
-    setTypes(options?.types)
+    setBorderRadius(options?.borderRadius)
+    setSrc(options?.src)
+    setButtonType(options?.buttonType)
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickButton(options?.onClickButton)

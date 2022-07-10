@@ -9,18 +9,17 @@ export const ModalBodyContainer = styled.section`
   height: fit-content;
 
   color: inherit;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  margin: ${marginValue.y}px ${marginValue.x}px;
 `
 export const ModalImageContainer = styled.picture`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 
   img {
     width: 100%;
@@ -28,7 +27,14 @@ export const ModalImageContainer = styled.picture`
   }
 `
 export const ModalMessageContainer = styled.section`
+  display: flex;
+  align-items: center;
   width: 100%;
-  margin: ${marginValue.y}px ${marginValue.x}px;
+  padding: 15px ${marginValue.x}px;
   margin-bottom: 0px;
+  max-width: 93%;
+
+  .message-skeleton {
+    height: 20px;
+  }
 `
