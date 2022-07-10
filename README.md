@@ -5,7 +5,7 @@
 ### Very Simple & Easy Modal For You
 
 ### Version
-- `0.0.1`
+- `0.0.8`
 - Be `1.0.0` When This Todo will Be Done.
 ### Storybook
 - https://bit.ly/3yQGzkZ
@@ -119,7 +119,7 @@ type ModalTextOptions = {
   header?: React.ReactNode
   buttonText?: string
   modalWidth?: string
-  types: 'normal' | 'primary' | 'warn'
+  buttonType: 'normal' | 'primary' | 'warn'
   description?: React.ReactNode
   onClickButton?: () => void
 }
@@ -129,7 +129,7 @@ type ModalTextOptions = {
 
 ```ts
 type ModalButtonOptions = {
-  types?: 'primary' | 'warn'
+  buttonType?: 'primary' | 'warn'
   src?: string
   borderRadius?: string
   isLoading?: boolean
