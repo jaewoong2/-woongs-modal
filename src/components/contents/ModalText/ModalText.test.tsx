@@ -1,9 +1,9 @@
 import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useEffect } from 'react'
-import { ModalTextOptions } from '../../../hooks/useModalText'
 import { ModalProvider } from '../../../context/ModalProvider'
 import { useModal } from '../../../hooks/useModal'
+import { ModalTextOptions } from '../../../types'
 
 const TestBox = ({ ...options }: ModalTextOptions) => {
   const { show, hide } = useModal('text', { ...options })

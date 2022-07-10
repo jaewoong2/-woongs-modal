@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import DefferedComponent from '../Defferd'
-import { SkeletonImage } from './Image.styles'
+import React, { useCallback, useState } from 'react'
+import { SkeletonImage, SkeletonContainer } from './Image.styles'
 
 type ImageProps = {
   placeholderSrc?: string
@@ -39,19 +38,22 @@ const ProgressiveImage = React.forwardRef<HTMLImageElement, ImageProps>(
     )
 
     return (
-      <SkeletonImage isLoading={isLoading || isImageLoading}>
-        <img
-          ref={ref}
-          src={src}
-          alt={src?.slice(0, 10)}
-          onLoad={handleLoaded(false)}
-          onError={hanldeErrored(false)}
-          loading="lazy"
-          width={'450px'}
-          height={'250px'}
-          {...props}
-        />
-      </SkeletonImage>
+      <SkeletonContainer isLoading={isLoading || isImageLoading}>
+        <SkeletonImage isLoading={isLoading || isImageLoading} />
+        {!isLoading && (
+          <img
+            ref={ref}
+            src={src}
+            alt={src?.slice(0, 10)}
+            onLoad={handleLoaded(false)}
+            onError={hanldeErrored(false)}
+            loading="lazy"
+            width={'450px'}
+            height={'250px'}
+            {...props}
+          />
+        )}
+      </SkeletonContainer>
     )
   },
 )

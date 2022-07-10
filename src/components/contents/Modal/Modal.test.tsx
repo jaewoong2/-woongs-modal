@@ -1,11 +1,11 @@
 import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useEffect } from 'react'
-import { ModalNoramlOptions } from '../../../hooks/useModalNormal'
 import { ModalProvider } from '../../../context/ModalProvider'
 import { useModal } from '../../../hooks/useModal'
+import { ModalNormalOptions } from '../../../types'
 
-const TestBox = ({ ...options }: ModalNoramlOptions) => {
+const TestBox = ({ ...options }: ModalNormalOptions) => {
   const { show, hide } = useModal('normal', { ...options })
 
   useEffect(() => {

@@ -6,8 +6,8 @@ const primaryColor = '#3e79ff'
 const hoverColor = '#3890ff'
 const normalColor = '#f6f6f6'
 const hoverNormalColor = '#cfcfcf'
-const hoverWarnColor = '#ff7875'
 const warnColor = '#ff4d4f'
+const hoverWarnColor = '#ff7875'
 
 const getButtonColor = (types: ButtonType) => {
   if (types === 'primary') {

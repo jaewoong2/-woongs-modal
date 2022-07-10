@@ -27,12 +27,19 @@ export const ModalContainer = styled.section`
 
 export const ModalContents = styled.section<ModalContentsProps>`
   width: ${({ modalWidth }) => modalWidth ?? '450px'};
+  max-height: 550px;
 
   background-color: white;
   border-radius: ${({ borderRaidus }) => borderRaidus};
 
   z-index: 9999;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+
+  overflow-y: scroll;
+
+  @media screen and (max-width: ${({ modalWidth }) => modalWidth ?? '450px'}) {
+    margin: 0 10px;
+  }
 `
 
 export const ModalHeader = styled.section`

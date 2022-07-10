@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { ModalText } from './index'
-import { ModalTextOptions } from '../../../hooks/useModalText'
 import { useModal } from '../../../hooks/useModal'
+import { ModalTextOptions } from '../../../types'
 
 export default {
   title: 'Block/ModalText',
@@ -54,9 +54,18 @@ LongText.args = {
 
 export const Warn = Template.bind({})
 Warn.args = {
-  types: 'warn',
+  buttonType: 'warn',
   description: 'ModalText Description',
   message: 'Warnning',
+  buttonText: 'Button Text Message',
+  isLoading: false,
+}
+
+export const Normal = Template.bind({})
+Normal.args = {
+  buttonType: 'normal',
+  description: 'ModalText Description',
+  message: 'Normal Text',
   buttonText: 'Button Text Message',
   isLoading: false,
 }

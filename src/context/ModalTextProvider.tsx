@@ -29,9 +29,10 @@ export const ModalTextContext = createContext(initialContextValue)
 export const ModalTextProvider: React.FC<Props> = ({ children }) => {
   const [isShow, setIsShow] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [borderRadius, setBorderRadius] = useState<string | undefined>('8px')
-  const [modalWidth, setModalWidth] = useState<string | undefined>('450px')
-  const [buttonType, setButtonType] = useState<ButtonType | undefined>('primary')
+
+  const [borderRadius, setBorderRadius] = useState<string | undefined>()
+  const [modalWidth, setModalWidth] = useState<string | undefined>()
+  const [buttonType, setButtonType] = useState<ButtonType | undefined>()
 
   const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [description, setDescription] = useState<React.ReactNode | null>(null)

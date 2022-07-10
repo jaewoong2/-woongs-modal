@@ -1,9 +1,9 @@
 import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useEffect } from 'react'
-import { ModalButtonOptions } from '../../../hooks/useModalButton'
 import { ModalProvider } from '../../../context/ModalProvider'
 import { useModal } from '../../../hooks/useModal'
+import { ModalButtonOptions } from '../../../types'
 
 const TestBox = ({ ...options }: ModalButtonOptions) => {
   const { show, hide } = useModal('button', { ...options })

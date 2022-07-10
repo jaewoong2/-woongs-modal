@@ -1,22 +1,28 @@
-import { ModalButtonOptions, useModalButton } from './useModalButton'
-import { ModalNoramlOptions, useModalNormal } from './useModalNormal'
-import { ModalType } from './../types/index'
-import { ModalTextOptions, useModalText } from './useModalText'
+import {
+  InitialModalBasicValue,
+  InitialModalButtonValue,
+  InitialModalNormalValue,
+  InitialModalTextValue,
+} from './../constant/index'
+import { useModalButton } from './useModalButton'
+import { useModalNormal } from './useModalNormal'
+import { ModalButtonOptions, ModalNormalOptions, ModalTextOptions, ModalType } from './../types/index'
+import { useModalText } from './useModalText'
 
-function useModal(t: 'normal', o: ModalNoramlOptions): { show: () => void; hide: () => void }
+function useModal(t: 'normal', o: ModalNormalOptions): { show: () => void; hide: () => void }
 function useModal(t: 'button', o: ModalButtonOptions): { show: () => void; hide: () => void }
 function useModal(t: 'text', o: ModalTextOptions): { show: () => void; hide: () => void }
-function useModal(type: ModalType, options: ModalNoramlOptions | ModalButtonOptions | ModalTextOptions) {
+function useModal(type: ModalType, options: ModalNormalOptions | ModalButtonOptions | ModalTextOptions) {
   if (type === 'button') {
-    return useModalButton(options)
+    return useModalButton({ ...InitialModalBasicValue, ...InitialModalButtonValue, ...options })
   }
 
   if (type === 'normal') {
-    return useModalNormal(options)
+    return useModalNormal({ ...InitialModalBasicValue, ...InitialModalNormalValue, ...options })
   }
 
   if (type === 'text') {
-    return useModalText(options)
+    return useModalText({ ...InitialModalBasicValue, ...InitialModalTextValue, ...options })
   }
 
   return { show: () => {}, hide: () => {} }
