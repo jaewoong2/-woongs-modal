@@ -1,4 +1,4 @@
-import { IMAGE_MOCK_SRC, ModalContext } from '../context/ModalProvider'
+import { ModalNormalContext, IMAGE_MOCK_SRC } from './../context/ModalNormalProvider'
 import { useContext, useEffect } from 'react'
 
 export type ModalNoramlOptions = {
@@ -28,13 +28,11 @@ const useModalNormal = ({ ...options }: ModalNoramlOptions) => {
     setMessage,
     setOnClickFooterLeft,
     setIsLoading,
-    setType,
     setOnClickFooterRight,
     setSrc,
-  } = useContext(ModalContext)
+  } = useContext(ModalNormalContext)
 
   useEffect(() => {
-    setType('normal')
     setBorderRadius(options?.borderRadius ?? '8px')
     setFooterLeftText(options?.footerLeftText ?? '닫기')
     setFooterRightText(options?.footerRightText ?? '확인')

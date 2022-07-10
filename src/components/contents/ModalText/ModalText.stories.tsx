@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { ModalText } from './index'
-import { useModalText, ModalTextOptions } from '../../../hooks/useModalText'
+import { ModalTextOptions } from '../../../hooks/useModalText'
+import { useModal } from '../../../hooks/useModal'
 
 export default {
   title: 'Block/ModalText',
@@ -9,9 +10,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ModalText>
 
-const Template = ({ ...options }: ModalTextOptions) => {
+const Template = ({ ...options }) => {
   const [option, setOption] = useState<ModalTextOptions>()
-  const { show, hide } = useModalText({ isLoading: true, ...option })
+  const { show, hide } = useModal('text', { isLoading: true, ...option })
 
   useEffect(() => {
     const timer = setTimeout(() => {

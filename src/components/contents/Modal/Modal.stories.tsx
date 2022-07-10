@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import Modal from './index'
-import { useModalNormal, ModalNoramlOptions } from '../../../hooks/useModalNormal'
+import { ModalNoramlOptions } from '../../../hooks/useModalNormal'
+import { useModal } from '../../../hooks/useModal'
 
 export default {
   title: 'Block/Modal',
@@ -11,7 +12,7 @@ export default {
 
 const Template = ({ ...options }: ModalNoramlOptions) => {
   const [option, setOption] = useState<ModalNoramlOptions>()
-  const { show, hide } = useModalNormal({ isLoading: true, ...option })
+  const { show, hide } = useModal('normal', { isLoading: true, ...option })
 
   useEffect(() => {
     const timer = setTimeout(() => {

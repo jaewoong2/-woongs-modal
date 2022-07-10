@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import ModalButton from './index'
-import { ModalButtonOptions, useModalButton } from '../../../hooks/useModalButton'
+import { ModalButtonOptions } from '../../../hooks/useModalButton'
+import { useModal } from '../../../hooks/useModal'
 
 export default {
   title: 'Block/ModalButton',
@@ -9,9 +10,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ModalButton>
 
-const Template = ({ ...options }: ModalButtonOptions) => {
+const Template = ({ ...options }) => {
   const [option, setOption] = useState<ModalButtonOptions>()
-  const { show, hide } = useModalButton({ isLoading: true, ...option })
+  const { show, hide } = useModal('button', { isLoading: true, ...option })
 
   useEffect(() => {
     const timer = setTimeout(() => {

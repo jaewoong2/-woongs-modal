@@ -1,4 +1,4 @@
-import { ModalContext } from '../context/ModalProvider'
+import { ModalTextContext } from './../context/ModalTextProvider'
 import { useContext, useEffect } from 'react'
 
 export type ModalTextOptions = {
@@ -21,16 +21,14 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setHeader,
     setMessage,
     setIsLoading,
-    setType,
     setTypes,
     setOnClickButton,
     setDescription,
     setButtonText,
     setModalWidth,
-  } = useContext(ModalContext)
+  } = useContext(ModalTextContext)
 
   useEffect(() => {
-    setType('text')
     setBorderRadius(options?.borderRadius ?? '8px')
     setHeader(options?.header)
     setMessage(options?.message)
