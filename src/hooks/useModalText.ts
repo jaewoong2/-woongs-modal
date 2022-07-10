@@ -21,7 +21,7 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setHeader,
     setMessage,
     setIsLoading,
-    setTypes,
+    setButtonType,
     setOnClickButton,
     setDescription,
     setButtonText,
@@ -37,7 +37,7 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setOnClickButton(options?.onClickButton)
     setModalWidth(options.modalWidth)
     setButtonText(options.buttonText)
-    setTypes(options.types ?? 'primary')
+    setButtonType(options.types ?? 'primary')
   }, [options])
 
   return { show, hide }

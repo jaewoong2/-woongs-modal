@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { ButtonType } from '../../../types'
 import ModalBasic from '../../blocks/ModalBasic'
 import ModalBody from '../../blocks/ModalBody'
 import ModalButtonFooter from '../../blocks/ModalButtonFooter'
@@ -13,7 +14,7 @@ type Props = {
   src?: string
   modalWidth?: string
   borderRaidus?: string
-  types?: 'primary' | 'warn' | 'normal'
+  buttonType?: ButtonType
 
   onClickButton?: () => void
   setHide: () => void
@@ -24,7 +25,7 @@ const ModalButton: React.FC<Props> = ({
   setHide,
   header,
   message,
-  types,
+  buttonType,
   buttonText,
   src,
   borderRaidus,
@@ -39,7 +40,7 @@ const ModalButton: React.FC<Props> = ({
       modalWidth={modalWidth}
       body={<ModalBody isLoading={isLoading} className="modal--body" src={src} alt={`${header}`} message={message} />}
       footer={
-        <ModalButtonFooter types={types ?? 'primary'} onClickButton={onClickButton}>
+        <ModalButtonFooter buttonType={buttonType ?? 'primary'} onClickButton={onClickButton}>
           {buttonText}
         </ModalButtonFooter>
       }

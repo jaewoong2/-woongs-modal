@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import ModalButton from '../components/contents/ModalButton'
+import { ButtonType } from '../types'
 
 export const IMAGE_MOCK_SRC =
   'https://uploads.codesandbox.io/uploads/user/7cd4bee2-a6f4-4c44-a3e9-f670ab1086d9/mnTc-large_.jpg'
@@ -18,7 +19,7 @@ type ModalButtonContextType = {
   setButtonText: (s?: string) => void
   setModalWidth: (s?: string) => void
   setBorderRadius: (s?: string) => void
-  setTypes: (s?: 'primary' | 'warn' | 'normal') => void
+  setButtonType: (s?: ButtonType) => void
   setMessage: (c?: React.ReactNode) => void
   setHeader: (c?: React.ReactNode) => void
   setOnClickButton: (cb?: () => void) => void
@@ -34,7 +35,7 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
   const [src, setSrc] = useState<string | undefined>(IMAGE_MOCK_SRC)
   const [borderRadius, setBorderRadius] = useState<string | undefined>('8px')
   const [modalWidth, setModalWidth] = useState<string | undefined>('450px')
-  const [types, setTypes] = useState<'primary' | 'warn' | 'normal' | undefined>('primary')
+  const [buttonType, setButtonType] = useState<ButtonType | undefined>('primary')
 
   const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [header, setHeader] = useState<React.ReactNode | null>(null)
@@ -50,7 +51,7 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
         setIsLoading: (b) => setIsLoading(b ?? false),
         setSrc: (s) => setSrc(s),
         setButtonText: (s) => setButtonText(s),
-        setTypes: (s) => setTypes(s),
+        setButtonType: (s) => setButtonType(s),
         setBorderRadius: (s) => setBorderRadius(s),
         setModalWidth: (s) => setModalWidth(s),
         setHeader: (c) => setHeader(c),
@@ -63,7 +64,7 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
         <ModalButton
           setHide={() => setIsShow(false)}
           src={src}
-          types={types}
+          buttonType={buttonType}
           modalWidth={modalWidth}
           borderRaidus={borderRadius}
           isLoading={isLoading}

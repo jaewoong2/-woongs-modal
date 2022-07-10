@@ -1,4 +1,4 @@
-import { ModalProvider } from '../src/context/ModalProvider'
+import { ModalProvider } from '../src'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

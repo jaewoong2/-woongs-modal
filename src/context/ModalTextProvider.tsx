@@ -1,5 +1,6 @@
 import React, { createContext, useMemo, useState } from 'react'
 import { ModalText } from '../components/contents/ModalText'
+import { ButtonType } from '../types'
 
 type Props = {
   children?: React.ReactNode
@@ -11,7 +12,7 @@ type ModalTextContextType = {
   show: () => void
   hide: () => void
   setIsLoading: (b?: boolean) => void
-  setTypes: (s?: 'primary' | 'warn' | 'normal') => void
+  setButtonType: (s?: ButtonType) => void
   setButtonText: (s?: string) => void
   setModalWidth: (s?: string) => void
   setBorderRadius: (s?: string) => void
@@ -30,7 +31,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [borderRadius, setBorderRadius] = useState<string | undefined>('8px')
   const [modalWidth, setModalWidth] = useState<string | undefined>('450px')
-  const [types, setTypes] = useState<'primary' | 'warn' | 'normal' | undefined>('primary')
+  const [buttonType, setButtonType] = useState<ButtonType | undefined>('primary')
 
   const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [description, setDescription] = useState<React.ReactNode | null>(null)
@@ -44,7 +45,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
       hide: () => setIsShow(false),
       setIsLoading: (b) => setIsLoading(b ?? false),
       setButtonText: (s) => setButtonText(s),
-      setTypes: (s) => setTypes(s),
+      setButtonType: (s) => setButtonType(s),
       setBorderRadius: (s) => setBorderRadius(s),
       setModalWidth: (s) => setModalWidth(s),
       setHeader: (c) => setHeader(c),
@@ -61,7 +62,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
       {isShow && (
         <ModalText
           modalWidth={modalWidth}
-          types={types}
+          buttonType={buttonType}
           borderRaidus={borderRadius}
           setHide={() => setIsShow(false)}
           message={message}

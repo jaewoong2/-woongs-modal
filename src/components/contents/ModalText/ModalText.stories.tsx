@@ -20,7 +20,7 @@ const Template = ({ ...options }) => {
     }, 1200)
 
     return () => clearTimeout(timer)
-  }, [options])
+  }, [])
 
   return (
     <div style={{ width: '400px', height: '400px', background: '#d9d9d9', position: 'relative' }}>

@@ -20,7 +20,7 @@ const useModalButton = ({ ...options }: ModalButtonOptions) => {
     hide,
     setBorderRadius,
     setOnClickButton,
-    setTypes,
+    setButtonType,
     setHeader,
     setButtonText,
     setModalWidth,
@@ -31,7 +31,7 @@ const useModalButton = ({ ...options }: ModalButtonOptions) => {
   useEffect(() => {
     setBorderRadius(options?.borderRadius ?? '8px')
     setSrc(options?.src ?? IMAGE_MOCK_SRC)
-    setTypes(options?.types)
+    setButtonType(options?.types)
     setHeader(options?.header)
     setMessage(options?.message)
     setOnClickButton(options?.onClickButton)

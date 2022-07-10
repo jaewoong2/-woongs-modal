@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { ComponentMeta } from '@storybook/react'
-import Modal from './index'
 import { ModalNoramlOptions } from '../../../hooks/useModalNormal'
 import { useModal } from '../../../hooks/useModal'
+import { ComponentMeta } from '@storybook/react'
+import Modal from './index'
 
 export default {
   title: 'Block/Modal',
@@ -20,7 +20,7 @@ const Template = ({ ...options }: ModalNoramlOptions) => {
     }, 1200)
 
     return () => clearTimeout(timer)
-  }, [options])
+  }, [])
 
   return (
     <div style={{ width: '400px', height: '400px', background: '#d9d9d9', position: 'relative' }}>

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { ButtonType } from '../../../types'
 
 const primaryColor = '#3e79ff'
 const hoverColor = '#3890ff'
@@ -7,8 +8,6 @@ const normalColor = '#f6f6f6'
 const hoverNormalColor = '#cfcfcf'
 const hoverWarnColor = '#ff7875'
 const warnColor = '#ff4d4f'
-
-type ButtonType = 'primary' | 'warn' | 'normal'
 
 const getButtonColor = (types: ButtonType) => {
   if (types === 'primary') {
@@ -50,7 +49,7 @@ export const Container = styled.section`
   align-items: center;
 `
 
-export const ModalButton = styled.button<{ types: 'primary' | 'warn' | 'normal' }>`
+export const ModalButton = styled.button<{ buttonType: ButtonType }>`
   width: 100%;
   height: 50px;
   display: flex;
@@ -63,6 +62,6 @@ export const ModalButton = styled.button<{ types: 'primary' | 'warn' | 'normal' 
   cursor: pointer;
   border-radius: 8px;
   color: white;
-  ${({ types }) => getButtonColor(types)};
+  ${({ buttonType }) => getButtonColor(buttonType)};
   transition: background-color 0.3s;
 `
