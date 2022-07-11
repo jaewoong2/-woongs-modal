@@ -59,7 +59,7 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
         setOnClickFooterRight: (cb) => setOnClickFooterRight(cb),
       }}
     >
-      <div aria-hidden={isShow}>{children}</div>
+      {children}
       {isShow && (
         <Modal
           setHide={() => setIsShow(false)}

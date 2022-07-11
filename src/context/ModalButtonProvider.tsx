@@ -57,7 +57,7 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
         setOnClickButton: (cb) => setOnClickButton(cb),
       }}
     >
-      <div aria-hidden={isShow}>{children}</div>
+      {children}
       {isShow && (
         <ModalButton
           setHide={() => setIsShow(false)}

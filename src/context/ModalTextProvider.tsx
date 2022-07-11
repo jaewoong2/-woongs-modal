@@ -59,7 +59,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <ModalTextContext.Provider value={value}>
-      <div aria-hidden={isShow}>{children}</div>
+      {children}
       {isShow && (
         <ModalText
           modalWidth={modalWidth}
