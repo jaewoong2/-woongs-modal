@@ -17,10 +17,12 @@ const ModalBody: React.FC<Props> = ({ isLoading, alt, src, message, className })
     <ModalBodyContainer className={className}>
       <DefferedComponent isLoaded={!isLoading}>
         <ModalImageContainer>
-          <Image isLoading={isLoading} src={src} alt={alt} />
+          <Image tabIndex={0} isLoading={isLoading} src={src} alt={alt} />
         </ModalImageContainer>
         <ModalMessageContainer>
-          <Message isLoading={isLoading}>{message}</Message>
+          <Message tabIndex={0} isLoading={isLoading}>
+            {message}
+          </Message>
         </ModalMessageContainer>
       </DefferedComponent>
     </ModalBodyContainer>

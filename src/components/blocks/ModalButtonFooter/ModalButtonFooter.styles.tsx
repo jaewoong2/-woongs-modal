@@ -55,7 +55,6 @@ export const ModalButton = styled.button<{ buttonType: ButtonType }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: none;
   border: none;
   font-size: 1em;
   font-weight: 400;

@@ -17,7 +17,6 @@ export const Container = styled.footer`
     justify-content: center;
     align-items: center;
 
-    outline: none;
     border: none;
     background-color: transparent;
 

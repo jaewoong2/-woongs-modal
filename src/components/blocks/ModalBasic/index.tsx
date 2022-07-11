@@ -1,4 +1,6 @@
 import React, { useCallback } from 'react'
+import { CloseButton } from '../../atoms/CloseButton'
+import { TopButtons } from '../../atoms/TopButtons'
 import { ModalContainer, ModalHeader, ModalContents, ModalFooter } from './ModalBasic.styles'
 
 type ModalBasicProps = {
@@ -21,7 +23,10 @@ const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaid
 
   return (
     <ModalContainer onClick={handleModalView}>
-      <ModalContents modalWidth={modalWidth} borderRaidus={borderRaidus ?? '8px'}>
+      <TopButtons modalWidth={modalWidth}>
+        <CloseButton onClick={setHide} />
+      </TopButtons>
+      <ModalContents role="dialog" aria-label="modal" modalWidth={modalWidth} borderRaidus={borderRaidus ?? '8px'}>
         <ModalHeader>{header}</ModalHeader>
         {body}
         <ModalFooter>{footer}</ModalFooter>
