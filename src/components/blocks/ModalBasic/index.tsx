@@ -21,7 +21,7 @@ const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaid
 
   return (
     <ModalContainer onClick={handleModalView}>
-      <ModalContents modalWidth={modalWidth} borderRaidus={borderRaidus ?? '8px'}>
+      <ModalContents role="dialog" aria-label="modal" modalWidth={modalWidth} borderRaidus={borderRaidus ?? '8px'}>
         <ModalHeader>{header}</ModalHeader>
         {body}
         <ModalFooter>{footer}</ModalFooter>

@@ -44,7 +44,7 @@ const ProgressiveImage = React.forwardRef<HTMLImageElement, ImageProps>(
           <img
             ref={ref}
             src={src}
-            alt={src?.slice(0, 10)}
+            alt={'modal-img'}
             onLoad={handleLoaded(false)}
             onError={hanldeErrored(false)}
             loading="lazy"
