@@ -19,6 +19,7 @@ const ModalNormalFooter: React.FC<Props> = ({
   return (
     <Container>
       <Left
+        aria-label="cancle"
         onClick={() => {
           if (typeof onClickFooterLeft === 'function') {
             onClickFooterLeft()
@@ -29,7 +30,7 @@ const ModalNormalFooter: React.FC<Props> = ({
       >
         {footerLeftText}
       </Left>
-      <Right onClick={onClickFooterRight} className="footer-btn">
+      <Right aria-label="ok" onClick={onClickFooterRight} className="footer-btn">
         {footerRightText}
       </Right>
     </Container>
