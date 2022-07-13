@@ -1,9 +1,8 @@
 import React from 'react'
 import { ButtonType } from '../../../types'
-import { Button } from '../../atoms/Button'
-import ModalBasic from '../../blocks/ModalBasic'
-import ModalFooter from '../../blocks/ModalFooter'
-import ModalTextBody from '../../blocks/ModalTextBody'
+import { ModalTextBodyContainer } from './ModalText.styles'
+import { Button, Message } from '../../atoms'
+import { ModalBasic, ModalBody, ModalFooter } from '../../blocks'
 
 type ModalTextProps = {
   header: React.ReactNode
@@ -37,7 +36,20 @@ const ModalText: React.FC<ModalTextProps> = ({
       borderRaidus={borderRaidus}
       header={header}
       setHide={setHide}
-      body={<ModalTextBody description={description} isLoading={isLoading} message={message} />}
+      body={
+        <ModalTextBodyContainer>
+          <div className="title-container">
+            <Message className="title" isLoading={isLoading}>
+              {message}
+            </Message>
+          </div>
+          <div className="description-container">
+            <Message className="description" isLoading={isLoading}>
+              {description}
+            </Message>
+          </div>
+        </ModalTextBodyContainer>
+      }
       footer={
         <ModalFooter>
           <ModalFooter.Button

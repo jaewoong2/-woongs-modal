@@ -1,9 +1,8 @@
 import React from 'react'
+
+import { Button, Image, Message } from '../../atoms'
+import { ModalBasic, ModalBody, ModalFooter } from '../../blocks'
 import { ButtonType } from '../../../types'
-import { Button } from '../../atoms/Button'
-import ModalBasic from '../../blocks/ModalBasic'
-import ModalBody from '../../blocks/ModalBody'
-import ModalFooter from '../../blocks/ModalFooter'
 
 type Props = {
   header: React.ReactNode
@@ -39,7 +38,12 @@ const ModalButton: React.FC<Props> = ({
       header={header}
       setHide={setHide}
       modalWidth={modalWidth}
-      body={<ModalBody isLoading={isLoading} className="modal--body" src={src} alt={`${header}`} message={message} />}
+      body={
+        <ModalBody isLoading={isLoading}>
+          <ModalBody.Image image={<Image src={src} alt={`${header}`} isLoading={isLoading} />} />
+          <ModalBody.Message message={<Message>{message}</Message>} />
+        </ModalBody>
+      }
       footer={
         <ModalFooter>
           <ModalFooter.Button

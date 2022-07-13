@@ -3,7 +3,7 @@ import { MessageSkeleton } from './Message.styles'
 
 type Props = { isLoading?: boolean } & React.DetailsHTMLAttributes<HTMLDivElement>
 
-const Message = forwardRef<HTMLDivElement, Props>(({ children, isLoading, className, ...props }, ref) => {
+export const Message = forwardRef<HTMLDivElement, Props>(({ children, isLoading, className, ...props }, ref) => {
   return (
     <MessageSkeleton className={isLoading ? 'message-skeleton' : ''} isLoading={isLoading}>
       <div ref={ref} className={'message-container ' + className} {...props}>
@@ -14,5 +14,3 @@ const Message = forwardRef<HTMLDivElement, Props>(({ children, isLoading, classN
 })
 
 Message.displayName = 'message'
-
-export default Message

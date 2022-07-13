@@ -3,7 +3,7 @@ import { Container } from './ModalFooter.styles'
 
 type ModalFooterProps = { children?: React.ReactNode }
 
-const ModalFooter = ({ children }: ModalFooterProps) => {
+export const ModalFooter = ({ children }: ModalFooterProps) => {
   return <Container>{children}</Container>
 }
 
@@ -16,5 +16,3 @@ const ModalFooterButton = ({ controls }: ModalFooterTriggerProps) => {
 }
 
 ModalFooter.Button = ModalFooterButton
-
-export default ModalFooter

@@ -1,9 +1,6 @@
 import React, { useCallback } from 'react'
-import { Divider } from '../../atoms/Divider'
-import { TextButton } from '../../atoms/TextButton'
-import ModalBasic from '../../blocks/ModalBasic'
-import ModalBody from '../../blocks/ModalBody'
-import ModalFooter from '../../blocks/ModalFooter'
+import { Divider, Image, Message, TextButton } from '../../atoms'
+import { ModalBasic, ModalBody, ModalFooter } from '../../blocks'
 
 type Props = {
   header: React.ReactNode
@@ -58,7 +55,12 @@ const Modal: React.FC<Props> = ({
       header={header}
       modalWidth={modalWidth}
       setHide={setHide}
-      body={<ModalBody isLoading={isLoading} src={src} alt={`${header}`} message={message} />}
+      body={
+        <ModalBody isLoading={isLoading}>
+          <ModalBody.Image image={<Image src={src} alt={`${header}`} isLoading={isLoading} />} />
+          <ModalBody.Message message={<Message>{message}</Message>} />
+        </ModalBody>
+      }
       footer={
         <ModalFooter>
           <ModalFooter.Button

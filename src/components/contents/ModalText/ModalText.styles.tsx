@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const TextBodyContainer = styled.section`
+export const ModalTextBodyContainer = styled.div`
   padding: 0 20px;
 
   .description-container {

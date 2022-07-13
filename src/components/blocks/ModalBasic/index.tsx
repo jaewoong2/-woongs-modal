@@ -14,7 +14,7 @@ type ModalBasicProps = {
   setHide: () => void
 }
 
-const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaidus, header, body, footer }) => {
+export const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaidus, header, body, footer }) => {
   const handleModalView = useCallback((e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (e?.target === e?.currentTarget) {
       setHide()
@@ -34,5 +34,3 @@ const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaid
     </ModalContainer>
   )
 }
-
-export default ModalBasic

@@ -14,7 +14,7 @@ export const ModalBodyContainer = styled.section`
   align-items: center;
   flex-direction: column;
 `
-export const ModalImageContainer = styled.picture`
+export const ModalImageContainer = styled.picture<{ width?: string; height?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,7 @@ export const ModalImageContainer = styled.picture`
     height: 100%;
   }
 `
-export const ModalMessageContainer = styled.section`
+export const ModalMessageContainer = styled.section<{ width?: string; height?: string }>`
   display: flex;
   align-items: center;
   width: 100%;
