@@ -1,7 +1,9 @@
 import React, { useCallback } from 'react'
+import { Divider } from '../../atoms/Divider'
+import { TextButton } from '../../atoms/TextButton'
 import ModalBasic from '../../blocks/ModalBasic'
 import ModalBody from '../../blocks/ModalBody'
-import ModalNormalFooter from '../../blocks/ModalNormalFooter'
+import ModalFooter from '../../blocks/ModalFooter'
 
 type Props = {
   header: React.ReactNode
@@ -12,7 +14,7 @@ type Props = {
   onClickFooterRight?: () => void
 
   footerLeftText: React.ReactNode
-  onClickFooterLeft?: () => void
+  onClickFooterLeft: () => void
 
   setHide: () => void
 
@@ -40,6 +42,16 @@ const Modal: React.FC<Props> = ({
     }
   }, [])
 
+  const handleLeftTextButton = useCallback(
+    (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      if (typeof onClickFooterLeft === 'function') {
+        onClickFooterLeft()
+      }
+      handleModalView(e)
+    },
+    [onClickFooterLeft],
+  )
+
   return (
     <ModalBasic
       borderRaidus={borderRaidus}
@@ -48,13 +60,21 @@ const Modal: React.FC<Props> = ({
       setHide={setHide}
       body={<ModalBody isLoading={isLoading} src={src} alt={`${header}`} message={message} />}
       footer={
-        <ModalNormalFooter
-          onClickFooterLeft={onClickFooterLeft}
-          onClickFooterRight={onClickFooterRight}
-          footerLeftText={footerLeftText}
-          footerRightText={footerRightText}
-          closeModal={handleModalView}
-        />
+        <ModalFooter>
+          <ModalFooter.Button
+            controls={
+              <>
+                <TextButton color={'#ff0000'} onClick={handleLeftTextButton}>
+                  {footerLeftText}
+                </TextButton>
+                <Divider width="1px" height="1.2em" />
+                <TextButton color={'#3e79ff'} onClick={onClickFooterRight}>
+                  {footerRightText}
+                </TextButton>
+              </>
+            }
+          />
+        </ModalFooter>
       }
     />
   )

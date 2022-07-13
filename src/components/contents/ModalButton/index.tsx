@@ -1,8 +1,9 @@
 import React from 'react'
 import { ButtonType } from '../../../types'
+import { Button } from '../../atoms/Button'
 import ModalBasic from '../../blocks/ModalBasic'
 import ModalBody from '../../blocks/ModalBody'
-import ModalButtonFooter from '../../blocks/ModalButtonFooter'
+import ModalFooter from '../../blocks/ModalFooter'
 
 type Props = {
   header: React.ReactNode
@@ -40,9 +41,15 @@ const ModalButton: React.FC<Props> = ({
       modalWidth={modalWidth}
       body={<ModalBody isLoading={isLoading} className="modal--body" src={src} alt={`${header}`} message={message} />}
       footer={
-        <ModalButtonFooter buttonType={buttonType ?? 'primary'} onClickButton={onClickButton}>
-          {buttonText}
-        </ModalButtonFooter>
+        <ModalFooter>
+          <ModalFooter.Button
+            controls={
+              <Button onClick={onClickButton} buttonType={buttonType}>
+                {buttonText}
+              </Button>
+            }
+          />
+        </ModalFooter>
       }
     />
   )

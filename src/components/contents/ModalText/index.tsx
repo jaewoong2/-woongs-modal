@@ -1,7 +1,8 @@
 import React from 'react'
 import { ButtonType } from '../../../types'
+import { Button } from '../../atoms/Button'
 import ModalBasic from '../../blocks/ModalBasic'
-import ModalButtonFooter from '../../blocks/ModalButtonFooter'
+import ModalFooter from '../../blocks/ModalFooter'
 import ModalTextBody from '../../blocks/ModalTextBody'
 
 type ModalTextProps = {
@@ -38,9 +39,15 @@ const ModalText: React.FC<ModalTextProps> = ({
       setHide={setHide}
       body={<ModalTextBody description={description} isLoading={isLoading} message={message} />}
       footer={
-        <ModalButtonFooter buttonType={buttonType ?? 'primary'} onClickButton={onClickButton}>
-          {buttonText}
-        </ModalButtonFooter>
+        <ModalFooter>
+          <ModalFooter.Button
+            controls={
+              <Button onClick={onClickButton} buttonType={buttonType}>
+                {buttonText}
+              </Button>
+            }
+          />
+        </ModalFooter>
       }
     />
   )
