@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div<{ modalWidth?: string }>`
-  width: ${({ modalWidth }) => modalWidth ?? '450px'};
+  width: ${({ modalWidth }) => `calc(${modalWidth} - 40px)` ?? '410px'};
   height: fit-content;
   display: flex;
   justify-content: flex-end;
