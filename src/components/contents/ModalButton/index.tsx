@@ -48,7 +48,7 @@ const ModalButton: React.FC<Props> = ({
         <ModalFooter>
           <ModalFooter.Button
             controls={
-              <Button onClick={onClickButton} buttonType={buttonType}>
+              <Button type="button" onClick={onClickButton} buttonType={buttonType}>
                 {buttonText}
               </Button>
             }

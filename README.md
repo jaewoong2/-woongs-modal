@@ -7,8 +7,10 @@
 ### Version
 - `0.1.0`
 - Be `1.0.0` When This Todo will Be Done.
+  
 ### Storybook
-- https://bit.ly/3yQGzkZ
+- https://bit.ly/3IDGhB7
+  
 ---
 ## Installation
 
@@ -22,15 +24,23 @@ $ yarn add @jaewoong2/modal
 $ npm i @jaewoong2/modal
 ```
 ---
-## Image
+## Prototype Image
 
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/e1fbd3df-ea2f-41d3-9ae0-9334305e7ab8/image.png"/>
 
+- `useModal('normal', options)`
+
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/b55296ba-685f-45f8-990d-565ec59fa1a3/image.png"/>
+
+- `useModal('button', options)`
 
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/0fc2f93c-af6a-418b-bb8c-ae85e2e3b7f8/image.png"/>
 
+- `useModal('text', options)`
+
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/ce7ebc0e-455f-45bd-9cf2-d479b94a5c83/image.png"/>
+
+- You Can set Button Type by setting options `{ ...options, buttonType: 'primary' }`
 
 ---
 ## Usage
@@ -58,10 +68,10 @@ const App = () => {
 
 ### useModalNormal Call
 ```tsx
-import { useModalNormal } from "@jaewoong2/modal"
+import { useModal } from "@jaewoong2/modal"
 
 const ChildComponent = ({ options }) => {
-   const { show, hide } = useModalNormal({  ...options })
+   const { show, hide } = useModal('normal', {  ...options })
 
    return (
       <button onClick={show}>SHOW</button>
@@ -72,10 +82,10 @@ const ChildComponent = ({ options }) => {
 
 ### useModalText Call
 ``` tsx
-import { useModalText } from "@jaewoong2/modal"
+import { useModal } from "@jaewoong2/modal"
 
 const ChildComponent = ({ options }) => {
-   const { show, hide } = useModalText({  ...options })
+   const { show, hide } = useModal('text', {  ...options })
 
    return (
       <button onClick={show}>SHOW</button>
@@ -86,10 +96,10 @@ const ChildComponent = ({ options }) => {
 
 ### useModalButton Call
 ``` tsx
-import { useModalButton } from "@jaewoong2/modal"
+import { useModal } from "@jaewoong2/modal"
 
 const ChildComponent = ({ options }) => {
-   const { show, hide } = useModalButton({  ...options })
+   const { show, hide } = useModal('button', {  ...options })
 
    return (
       <button onClick={show}>SHOW</button>
@@ -101,54 +111,51 @@ const ChildComponent = ({ options }) => {
 ---
 ## Modals Options
 
-### useModalNormal Options
+### Modal Basic Options
 ```ts
-type ModalNoramlOptions = {
-  src?: string
+type ModalBasicOptions = {
   isLoading?: boolean
-  modalWidth?: string
   borderRadius?: string
-
+  modalWidth?: string
   message?: React.ReactNode
   header?: React.ReactNode
+}
+```
+
+### useModalNormal Options
+```ts
+type ModalNormalOptions = {
+  src?: string
+
   footerLeftText?: React.ReactNode
   footerRightText?: React.ReactNode
 
   onClickFooterLeft?: () => void
   onClickFooterRight?: () => void
-}
+} & ModalBasicOptions
 ```
 
 ### useModalText Options
 
 ```ts
 type ModalTextOptions = {
-  borderRadius?: string
-  isLoading?: boolean
-  message?: React.ReactNode
-  header?: React.ReactNode
+  buttonType?: ButtonType
   buttonText?: string
-  modalWidth?: string
-  buttonType: 'normal' | 'primary' | 'warn'
   description?: React.ReactNode
+
   onClickButton?: () => void
-}
+} & ModalBasicOptions
 ```
 
 ### useModalButton Options
 
 ```ts
 type ModalButtonOptions = {
-  buttonType?: 'primary' | 'warn'
+  buttonType?: ButtonType
   src?: string
-  borderRadius?: string
-  isLoading?: boolean
   buttonText?: string
-  message?: React.ReactNode
-  header?: React.ReactNode
-  modalWidth?: string
   onClickButton?: () => void
-}
+} & ModalBasicOptions
 ```
 
 ## UX / A11Y
@@ -168,6 +175,17 @@ type ModalButtonOptions = {
 
 
 ### For A11y Tags and Attributes
+- Image(Alt)
+- role="dialog"
+- aria-label="modal"
+- Modal Close Button
+- setting tabIndex
+
+### Documents
+
+- 유지 보수가 쉬운 컴포넌트로 리팩토링 하기
+- `DX` 가 좋은 `Custom Hook (useModal)` 만들기
+
 
 ---
 ## Next Todo
@@ -175,6 +193,17 @@ type ModalButtonOptions = {
 2. ~~StroyBook Hosting~~
 3. Document Writing
 4. Options (By Priority)
+---
+
+- Patch
+  - 코드 변경, 버그 수정
+
+- Minor
+  - 기능 추가
+
+- Major
+   - 정식 출시 및 업데이트 후, 기존 버전과 동일 하게 사용 할 수 없을 경우 Major 업데이트
+
 ---
 
 ### Build by Rollup

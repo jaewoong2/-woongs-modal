@@ -2,7 +2,7 @@ import React from 'react'
 import { ButtonType } from '../../../types'
 import { ModalTextBodyContainer } from './ModalText.styles'
 import { Button, Message } from '../../atoms'
-import { ModalBasic, ModalBody, ModalFooter } from '../../blocks'
+import { ModalBasic, ModalFooter } from '../../blocks'
 
 type ModalTextProps = {
   header: React.ReactNode
@@ -12,7 +12,6 @@ type ModalTextProps = {
   isLoading: boolean
   onClickButton?: () => void
   setHide: () => void
-
   modalWidth?: string
   borderRaidus?: string
   buttonType?: ButtonType
@@ -43,18 +42,18 @@ const ModalText: React.FC<ModalTextProps> = ({
               {message}
             </Message>
           </div>
-          <div className="description-container">
+          <caption className="description-container">
             <Message className="description" isLoading={isLoading}>
               {description}
             </Message>
-          </div>
+          </caption>
         </ModalTextBodyContainer>
       }
       footer={
         <ModalFooter>
           <ModalFooter.Button
             controls={
-              <Button onClick={onClickButton} buttonType={buttonType}>
+              <Button type="button" onClick={onClickButton} buttonType={buttonType}>
                 {buttonText}
               </Button>
             }
