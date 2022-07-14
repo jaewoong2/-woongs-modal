@@ -18,6 +18,7 @@ const Template = ({ ...options }) => {
   const { show, hide } = useModal('button', { isLoading: true, ...option })
 
   useEffect(() => {
+    show()
     const timer = setTimeout(() => {
       setOption({ ...options })
     }, 1200)

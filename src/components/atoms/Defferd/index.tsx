@@ -5,7 +5,11 @@ type DefferedComponentProps = {
   isLoaded?: boolean
 } & React.DelHTMLAttributes<React.ReactFragment>
 
-const DefferedComponent: React.FC<DefferedComponentProps> = ({ isLoaded = false, deferTime = 200, children }) => {
+export const DefferedComponent: React.FC<DefferedComponentProps> = ({
+  isLoaded = false,
+  deferTime = 200,
+  children,
+}) => {
   const [isDeferred, setIsDeferred] = useState(isLoaded ? true : false)
 
   useEffect(() => {
@@ -24,5 +28,3 @@ const DefferedComponent: React.FC<DefferedComponentProps> = ({ isLoaded = false,
 }
 
 DefferedComponent.displayName = 'DefferedComponent'
-
-export default DefferedComponent

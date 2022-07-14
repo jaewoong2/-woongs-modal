@@ -6,7 +6,7 @@ import { ModalContainer, ModalHeader, ModalContents, ModalFooter } from './Modal
 type ModalBasicProps = {
   borderRaidus?: string
   modalWidth?: string
-
+  fontSize?: string
   header: React.ReactNode
   body?: React.ReactNode
   footer?: React.ReactNode
@@ -14,7 +14,15 @@ type ModalBasicProps = {
   setHide: () => void
 }
 
-const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaidus, header, body, footer }) => {
+export const ModalBasic: React.FC<ModalBasicProps> = ({
+  modalWidth,
+  setHide,
+  borderRaidus,
+  header,
+  body,
+  footer,
+  fontSize,
+}) => {
   const handleModalView = useCallback((e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (e?.target === e?.currentTarget) {
       setHide()
@@ -26,7 +34,13 @@ const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaid
       <TopButtons modalWidth={modalWidth}>
         <CloseButton onClick={setHide} />
       </TopButtons>
-      <ModalContents role="dialog" aria-label="modal" modalWidth={modalWidth} borderRaidus={borderRaidus ?? '8px'}>
+      <ModalContents
+        fontSize={fontSize}
+        role="dialog"
+        aria-label="modal"
+        modalWidth={modalWidth}
+        borderRaidus={borderRaidus ?? '8px'}
+      >
         <ModalHeader>{header}</ModalHeader>
         {body}
         <ModalFooter>{footer}</ModalFooter>
@@ -34,5 +48,3 @@ const ModalBasic: React.FC<ModalBasicProps> = ({ modalWidth, setHide, borderRaid
     </ModalContainer>
   )
 }
-
-export default ModalBasic

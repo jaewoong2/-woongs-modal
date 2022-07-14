@@ -6,4 +6,8 @@ export const Container = styled.div<{ modalWidth?: string }>`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media screen and (max-width: ${({ modalWidth }) => `calc(${modalWidth} - 40px)` ?? '410px'}) {
+    width: calc(100% - 20px);
+  }
 `

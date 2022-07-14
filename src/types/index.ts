@@ -14,6 +14,7 @@ type ModalBasicOptions = {
   modalWidth?: string
   message?: React.ReactNode
   header?: React.ReactNode
+  fontSize?: string
 }
 
 export type ModalButtonOptions = {

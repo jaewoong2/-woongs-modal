@@ -5,16 +5,15 @@ const marginValue = {
 }
 
 export const ModalBodyContainer = styled.section`
-  width: fit-content;
-  height: fit-content;
-
+  width: 100%;
   color: inherit;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+
+  gap: 10px;
 `
-export const ModalImageContainer = styled.picture`
+export const ModalImageContainer = styled.picture<{ width?: string; height?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,15 +25,10 @@ export const ModalImageContainer = styled.picture`
     height: 100%;
   }
 `
-export const ModalMessageContainer = styled.section`
+export const ModalMessageContainer = styled.section<{ width?: string; height?: string }>`
   display: flex;
   align-items: center;
   width: 100%;
   padding: 15px ${marginValue.x}px;
   margin-bottom: 0px;
-  max-width: 93%;
-
-  .message-skeleton {
-    height: 20px;
-  }
 `

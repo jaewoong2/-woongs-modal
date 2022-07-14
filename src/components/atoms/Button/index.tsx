@@ -9,7 +9,7 @@ const hoverNormalColor = '#cfcfcf'
 const warnColor = '#ff4d4f'
 const hoverWarnColor = '#ff7875'
 
-const getButtonColor = (types: ButtonType) => {
+const getButtonColor = (types?: ButtonType) => {
   if (types === 'primary') {
     return css`
       background-color: ${primaryColor};
@@ -40,16 +40,11 @@ const getButtonColor = (types: ButtonType) => {
       }
     `
   }
+
+  return css``
 }
 
-export const Container = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const ModalButton = styled.button<{ buttonType: ButtonType }>`
+export const Button = styled.button<{ buttonType?: ButtonType }>`
   width: 100%;
   height: 50px;
   display: flex;

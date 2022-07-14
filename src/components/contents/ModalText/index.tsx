@@ -1,8 +1,8 @@
 import React from 'react'
 import { ButtonType } from '../../../types'
-import ModalBasic from '../../blocks/ModalBasic'
-import ModalButtonFooter from '../../blocks/ModalButtonFooter'
-import ModalTextBody from '../../blocks/ModalTextBody'
+import { MessageContainer } from './ModalText.styles'
+import { Button, Message } from '../../atoms'
+import { ModalBasic, ModalBody, ModalFooter } from '../../blocks'
 
 type ModalTextProps = {
   header: React.ReactNode
@@ -12,7 +12,7 @@ type ModalTextProps = {
   isLoading: boolean
   onClickButton?: () => void
   setHide: () => void
-
+  fontSize?: string
   modalWidth?: string
   borderRaidus?: string
   buttonType?: ButtonType
@@ -27,20 +27,41 @@ const ModalText: React.FC<ModalTextProps> = ({
   buttonText,
   description,
   borderRaidus,
+  fontSize,
   onClickButton,
   modalWidth,
 }) => {
   return (
     <ModalBasic
+      fontSize={fontSize}
       modalWidth={modalWidth}
       borderRaidus={borderRaidus}
       header={header}
       setHide={setHide}
-      body={<ModalTextBody description={description} isLoading={isLoading} message={message} />}
+      body={
+        <ModalBody isLoading={isLoading}>
+          <MessageContainer fontSize="1.2em">
+            <Message skeleton={{ width: '100%', height: '80px', borderRadius: '8px' }} isLoading={isLoading}>
+              {message}
+            </Message>
+          </MessageContainer>
+          <MessageContainer fontSize="1em">
+            <Message skeleton={{ width: '80%', height: '20px', borderRadius: '4px' }} isLoading={isLoading}>
+              {description}
+            </Message>
+          </MessageContainer>
+        </ModalBody>
+      }
       footer={
-        <ModalButtonFooter buttonType={buttonType ?? 'primary'} onClickButton={onClickButton}>
-          {buttonText}
-        </ModalButtonFooter>
+        <ModalFooter>
+          <ModalFooter.Button
+            controls={
+              <Button type="button" onClick={onClickButton} buttonType={buttonType}>
+                {buttonText}
+              </Button>
+            }
+          />
+        </ModalFooter>
       }
     />
   )
