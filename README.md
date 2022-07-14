@@ -183,8 +183,9 @@ type ModalButtonOptions = {
 
 ### Documents
 
-- 유지 보수가 쉬운 컴포넌트로 리팩토링 하기
-- `DX` 가 좋은 `Custom Hook (useModal)` 만들기
+- [유지 보수가 쉬운 컴포넌트로 리팩토링 하기](/docs/%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98%EA%B0%80_%EC%89%AC%EC%9A%B4_%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8.md)
+
+- [`DX` 가 좋은 `Custom Hook (useModal)` 만들기 (함수 오버로딩)](/docs/DX%20가%20좋은%20Custom%20Hook%20(useModal)%20만들기%20(함수%20오버로딩).md)
 
 
 ---
