@@ -5,8 +5,6 @@ type Props = {
   children?: React.ReactNode
 }
 
-type StateFunction = (() => void) | undefined
-
 type ModalNormalContextType = {
   show: () => void
   hide: () => void

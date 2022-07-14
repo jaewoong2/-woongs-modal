@@ -42,7 +42,7 @@ export const ModalContents = styled.section<ModalContentsProps>`
   padding: 0 20px;
   font-size: ${({ fontSize }) => fontSize ?? '16px'};
 
-  @media screen and (max-width: ${({ modalWidth }) => `calc(${modalWidth} - 40px)` ?? '410px'}) {
+  @media screen and (max-width: ${({ modalWidth }) => `${modalWidth}` ?? '450px'}) {
     width: calc(100% - 40px);
     padding: 0 10px;
 
