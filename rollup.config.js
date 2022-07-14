@@ -6,7 +6,6 @@ import pkg from './package.json'
 
 export default {
   input: './src/index.ts',
-  externals: ['@emotion/react', '@emotion/styled'],
   output: [
     {
       file: pkg.main,
