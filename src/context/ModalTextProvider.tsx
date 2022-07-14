@@ -6,8 +6,6 @@ type Props = {
   children?: React.ReactNode
 }
 
-type StateFunction = (() => void) | undefined
-
 type ModalTextContextType = {
   show: () => void
   hide: () => void
@@ -40,7 +38,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
   const [description, setDescription] = useState<React.ReactNode | null>(null)
   const [header, setHeader] = useState<React.ReactNode | null>(null)
   const [buttonText, setButtonText] = useState<React.ReactNode | null>(null)
-  const [onClickButton, setOnClickButton] = useState<StateFunction>(() => {})
+  const [onClickButton, setOnClickButton] = useState<() => void>()
 
   const value: ModalTextContextType = useMemo(
     () => ({
@@ -54,7 +52,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
       setFontSize: (s) => setFontSize(s),
       setHeader: (c) => setHeader(c),
       setMessage: (c) => setMessage(c),
-      setOnClickButton: (cb) => setOnClickButton(cb),
+      setOnClickButton: (cb) => setOnClickButton(() => cb),
       setDescription: (c) => setDescription(c),
     }),
     [],

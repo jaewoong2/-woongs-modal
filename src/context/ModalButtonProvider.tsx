@@ -6,8 +6,6 @@ type Props = {
   children?: React.ReactNode
 }
 
-type StateFunction = (() => void) | undefined
-
 type ModalButtonContextType = {
   show: () => void
   hide: () => void
@@ -41,7 +39,7 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
   const [header, setHeader] = useState<React.ReactNode | null>(null)
   const [buttonText, setButtonText] = useState<React.ReactNode | null>(null)
 
-  const [onClickButton, setOnClickButton] = useState<StateFunction>(() => {})
+  const [onClickButton, setOnClickButton] = useState<() => void>(() => {})
 
   return (
     <ModalButtonContext.Provider
@@ -57,7 +55,7 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
         setHeader: (c) => setHeader(c),
         setMessage: (c) => setMessage(c),
         setFontSize: (s) => setFontSize(s),
-        setOnClickButton: (cb) => setOnClickButton(cb),
+        setOnClickButton: (cb) => setOnClickButton(() => cb),
       }}
     >
       {children}
