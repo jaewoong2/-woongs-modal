@@ -11,6 +11,7 @@ type ModalNormalContextType = {
   show: () => void
   hide: () => void
   setIsLoading: (b?: boolean) => void
+  setFontSize: (s?: string) => void
   setSrc: (s?: string) => void
   setModalWidth: (s?: string) => void
   setBorderRadius: (s?: string) => void
@@ -33,6 +34,7 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
   const [src, setSrc] = useState<string>()
   const [borderRadius, setBorderRadius] = useState<string | undefined>('8px')
   const [modalWidth, setModalWidth] = useState<string | undefined>('450px')
+  const [fontSize, setFontSize] = useState<string | undefined>()
   const [footerLeftText, setFooterLeftText] = useState<React.ReactNode>('닫기')
   const [footerRightText, setFooterRightText] = useState<React.ReactNode>('확인')
 
@@ -54,6 +56,7 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
         setHeader: (c) => setHeader(c),
         setMessage: (c) => setMessage(c),
         setFooterLeftText: (c) => setFooterLeftText(c),
+        setFontSize: (s) => setFontSize(s),
         setFooterRightText: (c) => setFooterRightText(c),
         setOnClickFooterLeft: (cb) => setOnClickFooterLeft(cb),
         setOnClickFooterRight: (cb) => setOnClickFooterRight(cb),
@@ -66,6 +69,7 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
           message={message}
           modalWidth={modalWidth}
           isLoading={isLoading}
+          fontSize={fontSize}
           src={src}
           header={header}
           borderRaidus={borderRadius}

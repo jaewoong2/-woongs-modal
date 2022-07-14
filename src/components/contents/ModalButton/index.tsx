@@ -15,6 +15,7 @@ type Props = {
   modalWidth?: string
   borderRaidus?: string
   buttonType?: ButtonType
+  fontSize?: string
 
   onClickButton?: () => void
   setHide: () => void
@@ -26,6 +27,7 @@ const ModalButton: React.FC<Props> = ({
   header,
   message,
   buttonType,
+  fontSize,
   buttonText,
   src,
   borderRaidus,
@@ -35,13 +37,14 @@ const ModalButton: React.FC<Props> = ({
   return (
     <ModalBasic
       borderRaidus={borderRaidus}
+      fontSize={fontSize}
       header={header}
       setHide={setHide}
       modalWidth={modalWidth}
       body={
         <ModalBody isLoading={isLoading}>
           <ModalBody.Image image={<Image src={src} alt={`${header}`} isLoading={isLoading} />} />
-          <ModalBody.Message message={<Message>{message}</Message>} />
+          <ModalBody.Message message={<Message isLoading={isLoading}>{message}</Message>} />
         </ModalBody>
       }
       footer={

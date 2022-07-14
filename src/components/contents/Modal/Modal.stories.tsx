@@ -38,7 +38,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   message: 'ModalButton Message',
   src: IMAGE_SRC,
-  modalWidth: '350px',
+  modalWidth: '450px',
   footerLeftText: '닫기',
   footerRightText: '확인',
   isLoading: false,

@@ -12,6 +12,7 @@ const useModalNormal = ({ ...options }: ModalNormalOptions) => {
     setFooterRightText,
     setHeader,
     setMessage,
+    setFontSize,
     setOnClickFooterLeft,
     setIsLoading,
     setOnClickFooterRight,
@@ -27,6 +28,7 @@ const useModalNormal = ({ ...options }: ModalNormalOptions) => {
     setMessage(options?.message)
     setOnClickFooterLeft(options?.onClickFooterLeft)
     setOnClickFooterRight(options?.onClickFooterRight)
+    setFontSize(options.fontSize)
     setIsLoading(options?.isLoading)
     setModalWidth(options.modalWidth)
   }, [options])

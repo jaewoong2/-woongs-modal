@@ -27,3 +27,19 @@ export const ModalTextBodyContainer = styled.div`
     padding: 10px 0;
   }
 `
+
+type MessageContainerProps = {
+  skeleton?: {
+    width?: string
+    height?: string
+    borderRaidus?: string
+  }
+  fontSize?: string
+  padding?: string
+}
+
+export const MessageContainer = styled.div<MessageContainerProps>`
+  width: 100%;
+  font-size: ${({ fontSize }) => fontSize};
+  padding: ${({ padding }) => padding};
+`

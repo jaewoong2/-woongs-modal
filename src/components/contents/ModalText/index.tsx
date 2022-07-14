@@ -1,8 +1,8 @@
 import React from 'react'
 import { ButtonType } from '../../../types'
-import { ModalTextBodyContainer } from './ModalText.styles'
+import { MessageContainer } from './ModalText.styles'
 import { Button, Message } from '../../atoms'
-import { ModalBasic, ModalFooter } from '../../blocks'
+import { ModalBasic, ModalBody, ModalFooter } from '../../blocks'
 
 type ModalTextProps = {
   header: React.ReactNode
@@ -12,6 +12,7 @@ type ModalTextProps = {
   isLoading: boolean
   onClickButton?: () => void
   setHide: () => void
+  fontSize?: string
   modalWidth?: string
   borderRaidus?: string
   buttonType?: ButtonType
@@ -26,28 +27,30 @@ const ModalText: React.FC<ModalTextProps> = ({
   buttonText,
   description,
   borderRaidus,
+  fontSize,
   onClickButton,
   modalWidth,
 }) => {
   return (
     <ModalBasic
+      fontSize={fontSize}
       modalWidth={modalWidth}
       borderRaidus={borderRaidus}
       header={header}
       setHide={setHide}
       body={
-        <ModalTextBodyContainer>
-          <div className="title-container">
-            <Message className="title" isLoading={isLoading}>
+        <ModalBody isLoading={isLoading}>
+          <MessageContainer fontSize="1.2em">
+            <Message skeleton={{ width: '100%', height: '80px', borderRadius: '8px' }} isLoading={isLoading}>
               {message}
             </Message>
-          </div>
-          <caption className="description-container">
-            <Message className="description" isLoading={isLoading}>
+          </MessageContainer>
+          <MessageContainer fontSize="1em">
+            <Message skeleton={{ width: '80%', height: '20px', borderRadius: '4px' }} isLoading={isLoading}>
               {description}
             </Message>
-          </caption>
-        </ModalTextBodyContainer>
+          </MessageContainer>
+        </ModalBody>
       }
       footer={
         <ModalFooter>

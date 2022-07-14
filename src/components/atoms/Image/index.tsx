@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { SkeletonImage, SkeletonContainer } from './Image.styles'
+import { Skeleton } from '../../skeletons/Skeleton'
 
 type ImageProps = {
   placeholderSrc?: string
@@ -38,8 +38,7 @@ const ProgressiveImage = React.forwardRef<HTMLImageElement, ImageProps>(
     )
 
     return (
-      <SkeletonContainer isLoading={isLoading || isImageLoading}>
-        <SkeletonImage isLoading={isLoading || isImageLoading} />
+      <Skeleton width={'100%'} height="300px" borderRadius="8px" isSkeletonShow={isLoading || isImageLoading}>
         {!isLoading && (
           <img
             ref={ref}
@@ -53,7 +52,7 @@ const ProgressiveImage = React.forwardRef<HTMLImageElement, ImageProps>(
             {...props}
           />
         )}
-      </SkeletonContainer>
+      </Skeleton>
     )
   },
 )

@@ -11,6 +11,7 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setMessage,
     setIsLoading,
     setButtonType,
+    setFontSize,
     setOnClickButton,
     setDescription,
     setButtonText,
@@ -22,6 +23,7 @@ const useModalText = ({ ...options }: ModalTextOptions) => {
     setHeader(options?.header)
     setMessage(options?.message)
     setDescription(options?.description)
+    setFontSize(options.fontSize)
     setIsLoading(options?.isLoading)
     setOnClickButton(options?.onClickButton)
     setModalWidth(options.modalWidth)

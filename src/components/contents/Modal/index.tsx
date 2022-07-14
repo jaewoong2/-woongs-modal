@@ -11,13 +11,15 @@ type Props = {
   onClickFooterRight?: () => void
 
   footerLeftText: React.ReactNode
-  onClickFooterLeft: () => void
+  onClickFooterLeft?: () => void
 
   setHide: () => void
 
   src?: string
   modalWidth?: string
   borderRaidus?: string
+
+  fontSize?: string
 }
 
 const Modal: React.FC<Props> = ({
@@ -26,6 +28,7 @@ const Modal: React.FC<Props> = ({
   message,
   isLoading,
   src,
+  fontSize,
   borderRaidus,
   modalWidth,
   footerRightText,
@@ -51,6 +54,7 @@ const Modal: React.FC<Props> = ({
 
   return (
     <ModalBasic
+      fontSize={fontSize}
       borderRaidus={borderRaidus}
       header={header}
       modalWidth={modalWidth}
@@ -58,7 +62,7 @@ const Modal: React.FC<Props> = ({
       body={
         <ModalBody isLoading={isLoading}>
           <ModalBody.Image image={<Image src={src} alt={`${header}`} isLoading={isLoading} />} />
-          <ModalBody.Message message={<Message>{message}</Message>} />
+          <ModalBody.Message message={<Message isLoading={isLoading}>{message}</Message>} />
         </ModalBody>
       }
       footer={

@@ -1,6 +1,6 @@
 import React from 'react'
 import { DefferedComponent } from '../../atoms'
-import { ModalImageContainer, ModalBodyContainer, ModalMessageContainer } from './ModalBody.styles'
+import { ModalImageContainer, ModalBodyContainer } from './ModalBody.styles'
 
 type ModalBodyProps = {
   className?: string
@@ -24,22 +24,8 @@ const ModalBodyImage = ({ image, width, height }: { image: React.ReactNode; widt
   )
 }
 
-const ModalBodyMessage = ({
-  message,
-  width,
-  height,
-  className,
-}: {
-  message: React.ReactNode
-  width?: string
-  height?: string
-  className?: string
-}) => {
-  return (
-    <ModalMessageContainer className={className} width={width} height={height}>
-      {message}
-    </ModalMessageContainer>
-  )
+const ModalBodyMessage = ({ message, className }: { message: React.ReactNode; className?: string }) => {
+  return <ModalBodyContainer className={className}>{message}</ModalBodyContainer>
 }
 
 ModalBody.Message = ModalBodyMessage

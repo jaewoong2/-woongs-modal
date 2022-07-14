@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 
 type ModalContentsProps = {
-  borderRaidus: string
+  borderRaidus?: string
   modalWidth?: string
+  fontSize?: string
 }
 
 const marginValue = {
@@ -27,7 +28,7 @@ export const ModalContainer = styled.section`
 `
 
 export const ModalContents = styled.section<ModalContentsProps>`
-  width: ${({ modalWidth }) => modalWidth ?? '450px'};
+  width: ${({ modalWidth }) => `calc(${modalWidth} - 40px)` ?? '410px'};
   max-height: 550px;
 
   background-color: white;
@@ -38,8 +39,14 @@ export const ModalContents = styled.section<ModalContentsProps>`
 
   overflow-y: scroll;
 
-  @media screen and (max-width: ${({ modalWidth }) => modalWidth ?? '450px'}) {
-    margin: 0 10px;
+  padding: 0 20px;
+  font-size: ${({ fontSize }) => fontSize ?? '16px'};
+
+  @media screen and (max-width: ${({ modalWidth }) => `calc(${modalWidth} - 40px)` ?? '410px'}) {
+    width: calc(100% - 40px);
+    padding: 0 10px;
+
+    font-size: ${({ fontSize }) => fontSize ?? '13px'};
   }
 `
 
@@ -50,5 +57,5 @@ export const ModalHeader = styled.section`
 export const ModalFooter = styled.section`
   display: flex;
   justify-content: space-between;
-  padding: 10px ${marginValue.x}px;
+  padding: 10px 0px;
 `
