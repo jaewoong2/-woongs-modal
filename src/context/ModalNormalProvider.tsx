@@ -41,8 +41,8 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
   const [message, setMessage] = useState<React.ReactNode | null>(null)
   const [header, setHeader] = useState<React.ReactNode | null>(null)
 
-  const [onClickFooterLeft, setOnClickFooterLeft] = useState<StateFunction>(() => {})
-  const [onClickFooterRight, setOnClickFooterRight] = useState<StateFunction>(() => {})
+  const [onClickFooterLeft, setOnClickFooterLeft] = useState<() => void>(() => {})
+  const [onClickFooterRight, setOnClickFooterRight] = useState<() => void>(() => {})
 
   return (
     <ModalNormalContext.Provider
@@ -58,8 +58,8 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
         setFooterLeftText: (c) => setFooterLeftText(c),
         setFontSize: (s) => setFontSize(s),
         setFooterRightText: (c) => setFooterRightText(c),
-        setOnClickFooterLeft: (cb) => setOnClickFooterLeft(cb),
-        setOnClickFooterRight: (cb) => setOnClickFooterRight(cb),
+        setOnClickFooterLeft: (cb) => setOnClickFooterLeft(() => cb),
+        setOnClickFooterRight: (cb) => setOnClickFooterRight(() => cb),
       }}
     >
       {children}
