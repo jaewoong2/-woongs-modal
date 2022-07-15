@@ -1,5 +1,6 @@
 import React, { createContext, useMemo, useState } from 'react'
 import { ModalText } from '../components/contents/ModalText'
+import { GlobalStyle } from '../styles/GlobalStyle'
 import { ButtonType } from '../types'
 
 type Props = {
@@ -60,6 +61,7 @@ export const ModalTextProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <ModalTextContext.Provider value={value}>
+      {isShow && <GlobalStyle />}
       {children}
       {isShow && (
         <ModalText
