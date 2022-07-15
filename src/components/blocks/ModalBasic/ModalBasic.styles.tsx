@@ -25,6 +25,7 @@ export const ModalContainer = styled.section`
   left: 0;
   background-color: #4444449c;
   z-index: 9998;
+  overflow-y: hidden;
 `
 
 export const ModalContents = styled.section<ModalContentsProps>`

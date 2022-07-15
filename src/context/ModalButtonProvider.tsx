@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
 import ModalButton from '../components/contents/ModalButton'
+import { GlobalStyle } from '../styles/GlobalStyle'
 import { ButtonType } from '../types'
 
 type Props = {
@@ -41,23 +42,26 @@ export const ModalButtonProvider: React.FC<Props> = ({ children }) => {
 
   const [onClickButton, setOnClickButton] = useState<() => void>(() => {})
 
+  const value: ModalButtonContextType = useMemo(() => {
+    return {
+      show: () => setIsShow(true),
+      hide: () => setIsShow(false),
+      setIsLoading: (b) => setIsLoading(b ?? false),
+      setSrc: (s) => setSrc(s),
+      setButtonText: (s) => setButtonText(s),
+      setButtonType: (s) => setButtonType(s),
+      setBorderRadius: (s) => setBorderRadius(s),
+      setModalWidth: (s) => setModalWidth(s),
+      setHeader: (c) => setHeader(c),
+      setMessage: (c) => setMessage(c),
+      setFontSize: (s) => setFontSize(s),
+      setOnClickButton: (cb) => setOnClickButton(() => cb),
+    }
+  }, [])
+
   return (
-    <ModalButtonContext.Provider
-      value={{
-        show: () => setIsShow(true),
-        hide: () => setIsShow(false),
-        setIsLoading: (b) => setIsLoading(b ?? false),
-        setSrc: (s) => setSrc(s),
-        setButtonText: (s) => setButtonText(s),
-        setButtonType: (s) => setButtonType(s),
-        setBorderRadius: (s) => setBorderRadius(s),
-        setModalWidth: (s) => setModalWidth(s),
-        setHeader: (c) => setHeader(c),
-        setMessage: (c) => setMessage(c),
-        setFontSize: (s) => setFontSize(s),
-        setOnClickButton: (cb) => setOnClickButton(() => cb),
-      }}
-    >
+    <ModalButtonContext.Provider value={value}>
+      {isShow && <GlobalStyle />}
       {children}
       {isShow && (
         <ModalButton

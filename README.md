@@ -5,7 +5,7 @@
 ### Very Simple & Easy Modal For You
 
 ### Version
-- `0.1.3`
+- `0.1.6`
 - Be `1.0.0` When This Todo will Be Done.
   
 ### Storybook

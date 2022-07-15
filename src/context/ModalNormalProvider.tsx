@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
 import Modal from '../components/contents/Modal'
+import { GlobalStyle } from '../styles/GlobalStyle'
 
 type Props = {
   children?: React.ReactNode
@@ -42,24 +43,27 @@ export const ModalNormalProvider: React.FC<Props> = ({ children }) => {
   const [onClickFooterLeft, setOnClickFooterLeft] = useState<() => void>(() => {})
   const [onClickFooterRight, setOnClickFooterRight] = useState<() => void>(() => {})
 
+  const value: ModalNormalContextType = useMemo(() => {
+    return {
+      show: () => setIsShow(true),
+      hide: () => setIsShow(false),
+      setIsLoading: (b) => setIsLoading(b ?? false),
+      setSrc: (s) => setSrc(s),
+      setBorderRadius: (s) => setBorderRadius(s),
+      setModalWidth: (s) => setModalWidth(s),
+      setHeader: (c) => setHeader(c),
+      setMessage: (c) => setMessage(c),
+      setFooterLeftText: (c) => setFooterLeftText(c),
+      setFontSize: (s) => setFontSize(s),
+      setFooterRightText: (c) => setFooterRightText(c),
+      setOnClickFooterLeft: (cb) => setOnClickFooterLeft(() => cb),
+      setOnClickFooterRight: (cb) => setOnClickFooterRight(() => cb),
+    }
+  }, [])
+
   return (
-    <ModalNormalContext.Provider
-      value={{
-        show: () => setIsShow(true),
-        hide: () => setIsShow(false),
-        setIsLoading: (b) => setIsLoading(b ?? false),
-        setSrc: (s) => setSrc(s),
-        setBorderRadius: (s) => setBorderRadius(s),
-        setModalWidth: (s) => setModalWidth(s),
-        setHeader: (c) => setHeader(c),
-        setMessage: (c) => setMessage(c),
-        setFooterLeftText: (c) => setFooterLeftText(c),
-        setFontSize: (s) => setFontSize(s),
-        setFooterRightText: (c) => setFooterRightText(c),
-        setOnClickFooterLeft: (cb) => setOnClickFooterLeft(() => cb),
-        setOnClickFooterRight: (cb) => setOnClickFooterRight(() => cb),
-      }}
-    >
+    <ModalNormalContext.Provider value={value}>
+      {isShow && <GlobalStyle />}
       {children}
       {isShow && (
         <Modal
