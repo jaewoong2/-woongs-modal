@@ -9,9 +9,11 @@ import { useModalNormal } from './useModalNormal'
 import { ModalButtonOptions, ModalNormalOptions, ModalTextOptions, ModalType } from './../types/index'
 import { useModalText } from './useModalText'
 
-function useModal(type: 'normal', opions: ModalNormalOptions): { show: () => void; hide: () => void }
-function useModal(type: 'button', opions: ModalButtonOptions): { show: () => void; hide: () => void }
-function useModal(type: 'text', opions: ModalTextOptions): { show: () => void; hide: () => void }
+type ReturnUseModalType = { show: () => void; hide: () => void }
+
+function useModal(type: 'normal', opions: ModalNormalOptions): ReturnUseModalType
+function useModal(type: 'button', opions: ModalButtonOptions): ReturnUseModalType
+function useModal(type: 'text', opions: ModalTextOptions): ReturnUseModalType
 function useModal(type: ModalType, options: ModalNormalOptions | ModalButtonOptions | ModalTextOptions) {
   if (type === 'button') {
     return useModalButton({ ...InitialModalBasicValue, ...InitialModalButtonValue, ...options })
