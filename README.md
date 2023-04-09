@@ -5,7 +5,7 @@
 ### Very Simple & Easy Modal For You
 
 ### Version
-- `0.1.6`
+- `0.3.0` (#2023-04-09)
 - Be `1.0.0` When This Todo will Be Done.
   
 ### Storybook
@@ -28,15 +28,18 @@ $ npm i @jaewoong2/modal
 
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/e1fbd3df-ea2f-41d3-9ae0-9334305e7ab8/image.png"/>
 
-- `useModal('normal', options)`
+- `useModal(options) { default }` - *if not wirte option type, you can use it*
+- `options.type = "normal"`
 
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/b55296ba-685f-45f8-990d-565ec59fa1a3/image.png"/>
 
-- `useModal('button', options)`
+- `useModal(options)`
+- `options.type = "button"`
 
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/0fc2f93c-af6a-418b-bb8c-ae85e2e3b7f8/image.png"/>
 
-- `useModal('text', options)`
+- `useModal(options)`
+- `options.type = "text"`
 
 <img width="60%" src="https://velog.velcdn.com/images/jwisgenius/post/ce7ebc0e-455f-45bd-9cf2-d479b94a5c83/image.png"/>
 
@@ -70,8 +73,11 @@ const App = () => {
 ```tsx
 import { useModal } from "@jaewoong2/modal"
 
+/** 
+ * options: { type: "normal" }
+*/
 const ChildComponent = ({ options }) => {
-   const { show, hide } = useModal('normal', {  ...options })
+   const { show, hide } = useModal({  ...options })
 
    return (
       <button onClick={show}>SHOW</button>
@@ -84,8 +90,11 @@ const ChildComponent = ({ options }) => {
 ``` tsx
 import { useModal } from "@jaewoong2/modal"
 
+/** 
+ * options: { type: "text" }
+*/
 const ChildComponent = ({ options }) => {
-   const { show, hide } = useModal('text', {  ...options })
+   const { show, hide } = useModal({  ...options })
 
    return (
       <button onClick={show}>SHOW</button>
@@ -98,8 +107,11 @@ const ChildComponent = ({ options }) => {
 ``` tsx
 import { useModal } from "@jaewoong2/modal"
 
+/** 
+ * options: { type: "button" }
+*/
 const ChildComponent = ({ options }) => {
-   const { show, hide } = useModal('button', {  ...options })
+   const { show, hide } = useModal({  ...options })
 
    return (
       <button onClick={show}>SHOW</button>
@@ -125,6 +137,7 @@ type ModalBasicOptions = {
 ### useModalNormal Options
 ```ts
 type ModalNormalOptions = {
+  type?: "normal"
   src?: string
 
   footerLeftText?: React.ReactNode
@@ -139,6 +152,7 @@ type ModalNormalOptions = {
 
 ```ts
 type ModalTextOptions = {
+  type?: "text"
   buttonType?: ButtonType
   buttonText?: string
   description?: React.ReactNode
@@ -151,6 +165,7 @@ type ModalTextOptions = {
 
 ```ts
 type ModalButtonOptions = {
+  type?: "button"
   buttonType?: ButtonType
   src?: string
   buttonText?: string
@@ -192,8 +207,8 @@ type ModalButtonOptions = {
 ## Next Todo
 1. ~~Deployment / Publish~~
 2. ~~StroyBook Hosting~~
-3. Document Writing
-4. Options (By Priority)
+3. ~~Document Writing~~
+4. ~~Options (By Priority)~~
 ---
 
 - Patch

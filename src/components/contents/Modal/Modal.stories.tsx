@@ -21,7 +21,7 @@ const Template = ({ ...options }: ModalNormalOptions) => {
   }, [])
 
   return (
-    <div style={{ width: '400px', height: '400px', background: '#d9d9d9', position: 'relative' }}>
+    <div style={{ width: '400px', height: '401px', background: '#d9d9d9', position: 'relative' }}>
       <button onClick={() => show()}>Show</button>
       <button onClick={hide}>Hide</button>
     </div>
