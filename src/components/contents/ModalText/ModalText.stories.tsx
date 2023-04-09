@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import { ModalText } from './index'
 import { useModal } from '../../../hooks/useModal'
-import { ModalTextOptions } from '../../../types'
 
 export default {
   title: 'Block/ModalText',
@@ -11,16 +10,10 @@ export default {
 } as ComponentMeta<typeof ModalText>
 
 const Template = ({ ...options }) => {
-  const [option, setOption] = useState<ModalTextOptions>()
-  const { show, hide } = useModal({ type: 'text', isLoading: true, ...option })
+  const { show, hide } = useModal({ isLoading: true, ...options })
 
   useEffect(() => {
     show()
-    const timer = setTimeout(() => {
-      setOption({ ...options, type: 'text' })
-    }, 1200)
-
-    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -33,6 +26,7 @@ const Template = ({ ...options }) => {
 
 export const Primary = Template.bind({})
 Primary.args = {
+  type: 'text',
   message: 'ModalText Message',
   description: 'ModalText Message',
   isLoading: false,
@@ -41,11 +35,13 @@ Primary.args = {
 
 export const Skeleton = Template.bind({})
 Skeleton.args = {
+  type: 'text',
   isLoading: true,
 }
 
 export const LongText = Template.bind({})
 LongText.args = {
+  type: 'text',
   description: 'ModalText Description',
   message:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula bibendum nisl ac mattis. Pellentesque nec lectus massa. Sed consequat aliquet consequat. Sed commodo lectus at placerat elementum. Duis non eros eu libero feugiat tincidunt eu quis nulla. Mauris viverra ipsum eget arcu mollis, vitae tempus ipsum tempus. Nulla faucibus, nunc non pulvinar cursus, augue nisl iaculis ligula, in laoreet ipsum dolor a arcu. Phasellus vel aliquam felis. Praesent enim felis, pretium semper varius a, sagittis quis neque. Sed non',
@@ -55,6 +51,7 @@ LongText.args = {
 
 export const Warn = Template.bind({})
 Warn.args = {
+  type: 'text',
   buttonType: 'warn',
   description: 'ModalText Description',
   message: 'Warnning',
@@ -64,6 +61,7 @@ Warn.args = {
 
 export const Normal = Template.bind({})
 Normal.args = {
+  type: 'text',
   buttonType: 'normal',
   description: 'ModalText Description',
   message: 'Normal Text',

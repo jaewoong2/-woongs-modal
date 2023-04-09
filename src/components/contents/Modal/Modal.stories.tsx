@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useModal } from '../../../hooks/useModal'
 import { ComponentMeta } from '@storybook/react'
 import Modal from './index'
@@ -14,16 +14,10 @@ const IMAGE_SRC =
   'https://images.unsplash.com/photo-1656786998196-77a60593173c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80'
 
 const Template = ({ ...options }: ModalNormalOptions) => {
-  const [option, setOption] = useState<ModalNormalOptions>()
-  const { show, hide } = useModal({ isLoading: true, ...option })
+  const { show, hide } = useModal({ isLoading: true, ...options })
 
   useEffect(() => {
     show()
-    const timer = setTimeout(() => {
-      setOption({ ...options })
-    }, 1200)
-
-    return () => clearTimeout(timer)
   }, [])
 
   return (

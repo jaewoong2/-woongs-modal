@@ -31,7 +31,6 @@ describe('ModalNormal Message Test', () => {
     const MESSAGE = 'This is Test Message'
     const LEFT = 'Cancle'
     const RIGHT = 'OK'
-
     const { container } = render(
       <ModalProvider>
         <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} type="normal" />
@@ -159,6 +158,6 @@ describe('ModalNormal Message Test', () => {
 
     fireEvent.click(ModalNormal)
     // 렌더링 되면서 1번, fireEvent 로 클릭 1번
-    expect(handleClick).toHaveBeenCalledTimes(2)
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })

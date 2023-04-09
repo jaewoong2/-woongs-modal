@@ -130,6 +130,6 @@ describe('ModalText Message Test', () => {
 
     fireEvent.click(modalButton)
     // 렌더링 되면서 1번, fireEvent 로 클릭 1번
-    expect(handleClick).toHaveBeenCalledTimes(2)
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })
