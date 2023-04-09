@@ -6,7 +6,7 @@ import { useModal } from '../../../hooks/useModal'
 import { ModalNormalOptions } from '../../../types'
 
 const TestBox = ({ ...options }: ModalNormalOptions) => {
-  const { show, hide } = useModal('normal', { ...options })
+  const { show, hide } = useModal({ ...options })
 
   useEffect(() => {
     show()
@@ -34,7 +34,7 @@ describe('ModalNormal Message Test', () => {
 
     const { container } = render(
       <ModalProvider>
-        <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} />
+        <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} type="normal" />
       </ModalProvider>,
     )
 
@@ -60,7 +60,7 @@ describe('ModalNormal Message Test', () => {
 
     const { container } = render(
       <ModalProvider>
-        <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} />
+        <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} type="normal" />
       </ModalProvider>,
     )
 
@@ -93,7 +93,7 @@ describe('ModalNormal Message Test', () => {
 
     const { container } = render(
       <ModalProvider>
-        <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} />
+        <TestBox footerLeftText={LEFT} footerRightText={RIGHT} isLoading={false} message={MESSAGE} type="normal" />
       </ModalProvider>,
     )
 

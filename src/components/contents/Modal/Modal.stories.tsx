@@ -15,7 +15,7 @@ const IMAGE_SRC =
 
 const Template = ({ ...options }: ModalNormalOptions) => {
   const [option, setOption] = useState<ModalNormalOptions>()
-  const { show, hide } = useModal('normal', { isLoading: true, ...option })
+  const { show, hide } = useModal({ isLoading: true, ...option })
 
   useEffect(() => {
     show()
@@ -36,6 +36,7 @@ const Template = ({ ...options }: ModalNormalOptions) => {
 
 export const Primary = Template.bind({})
 Primary.args = {
+  type: 'normal',
   message: 'ModalButton Message',
   src: IMAGE_SRC,
   modalWidth: '450px',
@@ -46,12 +47,14 @@ Primary.args = {
 
 export const Skeleton = Template.bind({})
 Skeleton.args = {
+  type: 'normal',
   src: IMAGE_SRC,
   isLoading: true,
 }
 
 export const LongText = Template.bind({})
 LongText.args = {
+  type: 'normal',
   isLoading: false,
   src: IMAGE_SRC,
   message:

@@ -12,12 +12,12 @@ export default {
 
 const Template = ({ ...options }) => {
   const [option, setOption] = useState<ModalTextOptions>()
-  const { show, hide } = useModal('text', { isLoading: true, ...option })
+  const { show, hide } = useModal({ type: 'text', isLoading: true, ...option })
 
   useEffect(() => {
     show()
     const timer = setTimeout(() => {
-      setOption({ ...options })
+      setOption({ ...options, type: 'text' })
     }, 1200)
 
     return () => clearTimeout(timer)

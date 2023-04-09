@@ -18,6 +18,7 @@ type ModalBasicOptions = {
 }
 
 export type ModalButtonOptions = {
+  type?: 'button'
   buttonType?: ButtonType
   src?: string
   buttonText?: string
@@ -25,6 +26,7 @@ export type ModalButtonOptions = {
 } & ModalBasicOptions
 
 export type ModalNormalOptions = {
+  type?: 'normal'
   src?: string
 
   footerLeftText?: React.ReactNode
@@ -35,6 +37,7 @@ export type ModalNormalOptions = {
 } & ModalBasicOptions
 
 export type ModalTextOptions = {
+  type?: 'text'
   buttonType?: ButtonType
   buttonText?: string
   description?: React.ReactNode

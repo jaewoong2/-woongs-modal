@@ -6,7 +6,7 @@ import { useModal } from '../../../hooks/useModal'
 import { ModalTextOptions } from '../../../types'
 
 const TestBox = ({ ...options }: ModalTextOptions) => {
-  const { show, hide } = useModal('text', { ...options })
+  const { show, hide } = useModal({ ...options })
 
   useEffect(() => {
     show()
@@ -34,7 +34,7 @@ describe('ModalText Message Test', () => {
 
     const { container } = render(
       <ModalProvider>
-        <TestBox buttonText={BUTTON_TEXT} isLoading={false} description={DESCRIPTION} message={MESSAGE} />
+        <TestBox buttonText={BUTTON_TEXT} isLoading={false} description={DESCRIPTION} message={MESSAGE} type="text" />
       </ModalProvider>,
     )
 
@@ -54,7 +54,7 @@ describe('ModalText Message Test', () => {
 
     render(
       <ModalProvider>
-        <TestBox buttonText={BUTTON_TEXT} isLoading={false} description={DESCRIPTION} message={MESSAGE} />
+        <TestBox buttonText={BUTTON_TEXT} isLoading={false} description={DESCRIPTION} message={MESSAGE} type="text" />
       </ModalProvider>,
     )
 
@@ -79,7 +79,7 @@ describe('ModalText Message Test', () => {
 
     render(
       <ModalProvider>
-        <TestBox buttonText={BUTTON_TEXT} isLoading={false} description={DESCRIPTION} message={MESSAGE} />
+        <TestBox buttonText={BUTTON_TEXT} isLoading={false} description={DESCRIPTION} message={MESSAGE} type="text" />
       </ModalProvider>,
     )
 
@@ -117,6 +117,7 @@ describe('ModalText Message Test', () => {
           onClickButton={handleClick}
           description={DESCRIPTION}
           message={MESSAGE}
+          type="text"
         />
       </ModalProvider>,
     )
